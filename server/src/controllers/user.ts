@@ -18,6 +18,9 @@ module.exports = {
             return res.status(500).json({ message: 'server error, skill issue likely ;)' });
         }
     },
+    async createUser(){
+        
+    },
     async editUser() { 
 
     },
