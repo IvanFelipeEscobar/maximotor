@@ -8,5 +8,6 @@ export type Items = {
 export type User = {
     id: string
     username: string
-    email:
+    email: string
+    phone: string
 }
