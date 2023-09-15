@@ -1,37 +1,34 @@
 import { modelOptions, prop, getModelForClass } from "@typegoose/typegoose";
-// import { Vehicle } from "./vehicles";
+import { Vehicle } from "./vehicles";
 @modelOptions({
-    schemaOptions: {
-      timestamps: true,
-    }
-  })
-  
-  export class User {
-    @prop()
-    public _id?: string;
+  schemaOptions: {
+    timestamps: true,
+  },
+})
+export class User {
+  @prop()
+  public _id?: string;
 
-    @prop({required: true})
-    public username!: string;
-  
-    @prop({ required: true})
-    public phone?: string;
-  
-    @prop({ required: true })
-    public email!: string;
-  
-    @prop({ required: true })
-    public password!: string;
+  @prop({ required: true })
+  public username!: string;
 
-    @prop()
-    public address?: string
+  @prop({ required: true })
+  public phone?: string;
 
-    @prop({required: true, default: false})
-    public isAdmin!: boolean
+  @prop({ required: true })
+  public email!: string;
 
-  // @prop({ ref: () => [Vehicle] })
-  // public cars?: Ref<Vehicle>[]; // This is a Reference Array
+  @prop({ required: true })
+  public password!: string;
 
+  @prop()
+  public address?: string;
 
+  @prop({ required: true, default: false })
+  public isAdmin!: boolean;
 
-  }
-  export const user = getModelForClass(User)
+  @prop({ type: () => [Vehicle] })
+  public cars?: Vehicle[];
+}
+
+export const user = getModelForClass(User);
