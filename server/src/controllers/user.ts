@@ -2,7 +2,7 @@ import { user } from "../models/user";
 import {Request, Response} from 'express'
 
 module.exports = {
-    async getUser(req: Request, res: Response){
+    async getUser(req: Request , res: Response){
         try {
         const activeUser = await user.findOne(
             {
@@ -19,7 +19,7 @@ module.exports = {
         }
     },
     async createUser(){
-        
+
     },
     async editUser() { 
 
