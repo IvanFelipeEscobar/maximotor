@@ -1,5 +1,5 @@
 import { modelOptions, prop, getModelForClass } from "@typegoose/typegoose";
-import { Vehicle } from "./vehicles";
+// import { Vehicle } from "./vehicles";
 @modelOptions({
     schemaOptions: {
       timestamps: true,
@@ -24,6 +24,9 @@ import { Vehicle } from "./vehicles";
 
     @prop()
     public address?: string
+
+    @prop({required: true, default: false})
+    public isAdmin!: boolean
 
   // @prop({ ref: () => [Vehicle] })
   // public cars?: Ref<Vehicle>[]; // This is a Reference Array

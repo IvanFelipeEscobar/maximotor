@@ -4,10 +4,3 @@ export type Items = {
     description: string
     price: number
 }
-
-export type User = {
-    id: string
-    username: string
-    email: string
-    phone: string
-}
