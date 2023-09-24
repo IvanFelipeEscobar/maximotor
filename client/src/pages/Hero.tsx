@@ -43,7 +43,7 @@ export default function Hero() {
                 bg: 'red.400',
                 zIndex: -1,
               }}>
-              Vehicle repair & maintanance,
+              Vehicle repair & maintenance
             </Text>
             <br />
             <Text as={'span'} color={'red.400'}>
@@ -51,8 +51,7 @@ export default function Hero() {
             </Text>
           </Heading>
           <Text color={'gray.400'}>
-            Maximotor is a family operated automotive repair shop located in Marietta, GA
-
+              Vehicles can be complicated, let us worry about that part. 
           </Text>
           <Stack spacing={{ base: 4, sm: 6 }} direction={{ base: 'column', sm: 'row' }}>
             <Button
