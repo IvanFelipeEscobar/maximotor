@@ -1,37 +1,85 @@
-import { Box, Heading, Text, Flex, Image } from "@chakra-ui/react";
-import belt from '/chad-kirchoff-xe-e69j6-Ds-unsplash.jpg'
+import {
+  Box,
+  Heading,
+  Text,
+  Flex,
+  Image,
+  Container,
+  Stack,
+} from "@chakra-ui/react";
+import belt from "/chad-kirchoff-xe-e69j6-Ds-unsplash.jpg";
 export default function About() {
   return (
-    <Box py={12} >
-      <Flex
-        maxW="1200px"
-        mx="auto"
-        px={{ base: 4, md: 8 }}
+    <Container maxW={"7xl"}>
+      <Stack
+        align={"center"}
+        spacing={{ base: 8, md: 10 }}
+        py={{ base: 20, md: 28 }}
         direction={{ base: "column", md: "row" }}
-        alignItems="center"
-        justifyContent="space-between"
-        gap={'2rem'}
       >
-        <Box 
-            boxShadow={'2xl'} flex={{ base: "0", md: "1" }} order={{ base: 2, md: 1 }}>
-          <Image
-            src={belt} // Replace with your image URL
-            alt="Automotive Repair Shop"
-            rounded="lg"
-          />
-        </Box>
-        <Box flex={{ base: "1", md: "1" }} pr={{ base: 0, md: 12 }} order={{ base: 1, md: 2 }}>
-          <Heading as="h2" fontSize="3xl" color={'aliceblue'} mb={4}>
-            About Us
+        <Stack flex={1} spacing={{ base: 5, md: 10 }} order={{ base: 2, md: 1 }}>
+          <Heading
+            lineHeight={1.1}
+            fontWeight={600}
+            fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}
+          >
+            <Text
+              color={"aliceblue"}
+              as={"span"}
+              position={"relative"}
+              _after={{
+                content: "''",
+                width: "full",
+                height: "30%",
+                position: "absolute",
+                bottom: 1,
+                left: 0,
+                bg: "red.400",
+                zIndex: -1,
+              }}
+            >
+              About us
+            </Text>
           </Heading>
-          <Text fontSize="lg" color={'gray.400'}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-            eget justo nec urna feugiat vehicula. Aliquam erat volutpat.
-            Suspendisse potenti. Sed auctor laoreet libero, nec porttitor dolor
-            vulputate ac.
+          <Text color={"gray.400"}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget
+            justo nec urna feugiat vehicula. Aliquam erat volutpat. Suspendisse
+            potenti. Sed auctor laoreet libero, nec porttitor dolor vulputate
+            ac.
           </Text>
-        </Box>
-      </Flex>
-    </Box>
-  )
+          <Stack
+          order={{ base: 1, md: 2 }}
+            spacing={{ base: 4, sm: 6 }}
+            direction={{ base: "column", sm: "row" }}
+          ></Stack>
+        </Stack>
+        <Flex
+          flex={1}
+          justify={"center"}
+          align={"center"}
+          position={"relative"}
+          w={"full"}
+        >
+          <Box
+            position={"relative"}
+            height={"300px"}
+            rounded={"2xl"}
+            boxShadow={"2xl"}
+            width={"full"}
+            overflow={"hidden"}
+
+          >
+            <Image
+              alt={"serpentine belt"}
+              fit={"cover"}
+              align={"center"}
+              w={"100%"}
+              h={"100%"}
+              src={belt}
+            />
+          </Box>
+        </Flex>
+      </Stack>
+    </Container>
+  );
 }
