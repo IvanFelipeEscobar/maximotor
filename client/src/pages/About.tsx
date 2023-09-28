@@ -1,6 +1,5 @@
-import React from 'react'
 import { Box, Heading, Text, Flex, Image } from "@chakra-ui/react";
-
+import belt from '/chad-kirchoff-xe-e69j6-Ds-unsplash.jpg'
 export default function About() {
   return (
     <Box py={12} >
@@ -11,10 +10,12 @@ export default function About() {
         direction={{ base: "column", md: "row" }}
         alignItems="center"
         justifyContent="space-between"
+        gap={'2rem'}
       >
-        <Box flex={{ base: "0", md: "1" }} order={{ base: 2, md: 1 }}>
+        <Box 
+            boxShadow={'2xl'} flex={{ base: "0", md: "1" }} order={{ base: 2, md: 1 }}>
           <Image
-            src="/your-image.jpg" // Replace with your image URL
+            src={belt} // Replace with your image URL
             alt="Automotive Repair Shop"
             rounded="lg"
           />
