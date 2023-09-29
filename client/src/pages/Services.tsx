@@ -23,7 +23,7 @@ const serviceArr = [
     service: "Oil Change",
     description: `Oil drain and filled, filter replacement, tire pressure checked, all fluids checked and topped off and basic safety inspection`,
     img: "/markus-spiske-tx-9wlZaXq4-unsplash.jpg",
-    price: 'Regular - $30, Synthetic - $75 || up to 5 qts, carttridge filter applications may be more '
+    price: 'Regular - $30, Synthetic - $75 up to 5 qts, cartridge filter applications may be more '
   },
   {
     service: "Timing Belt",
@@ -31,6 +31,25 @@ const serviceArr = [
     img: "/parvez-azarqaderi-YM5HPbFvXIU-unsplash.jpg",
     price: 'Prices vary, contact us to get an estimate'
   },
+  {
+    service: "Suspension",
+    description: "Comprehensive suspension system inspection and repair, including shocks, struts, springs, sway bar links, ball joints, trailing arms and control arms.",
+    img: "/joshua-vialdores-yXdAs7284sY-unsplash.jpg",
+    price: "Price varies depending on the specific suspension components and repairs needed."
+  }, 
+  {
+    service: "Tune-Up",
+    description: "Complete engine tune-up, including spark plug replacement, air filter replacement, and fuel system cleaning.",
+    img: "/julian-hochgesang-zRDcbSvY0xo-unsplash.jpg",
+    price: "Price may vary based on vehicle make and model"
+  },
+  {
+    service: "Alignments",
+    description: "Wheel alignment service to ensure proper tire wear and vehicle handling.",
+    img: "/robert-laursoo-WHPOFFzY9gU-unsplash.jpg",
+    price: "$85 (Four-wheel toe-in only, camber adjustment may be extra)"
+  }
+
 ];
 const settings = {
   dots: true,
@@ -104,7 +123,7 @@ export default function Services() {
         {serviceArr.map( service => (
           <Box
             key={service.service}
-            height={"6xl"}
+            height={"3xl"}
             backgroundPosition="center"
             backgroundRepeat="no-repeat"
             backgroundSize="cover"
@@ -112,12 +131,12 @@ export default function Services() {
           >
             <AbsoluteCenter>
               <Box
-                maxW={"445px"}
+                // maxW={"445px"}
                 w={"full"}
                 boxShadow={"2xl"}
                 rounded={"md"}
                 p={6}
-                bg={"rgba(0,0,0,0.5)"}
+                bg={"rgba(0,0,0,0.8)"}
                 overflow={"hidden"}
               >
                 <Stack>
@@ -130,14 +149,13 @@ export default function Services() {
                   >
                      {service.service}
                   </Heading>
-                  <Text color={"gray.500"}>
+                  <Text color={"gray.200"}>
                     {service.description}
                   </Text>
                 </Stack>
                 <Stack mt={6} direction={"row"} spacing={4} align={"center"}>
                   <Stack direction={"column"} spacing={0} fontSize={"sm"}>
-                    <Text fontWeight={600}>Achim Rolle</Text>
-                    <Text color={"gray.500"}>Feb 08, 2021 · 6min read</Text>
+                    <Text color={"gray.400"}>{service.price}</Text>
                   </Stack>
                 </Stack>
               </Box></AbsoluteCenter>
