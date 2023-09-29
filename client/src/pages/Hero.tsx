@@ -1,3 +1,4 @@
+'use client'
 import cars from '/erik-mclean-ioEjMWHn2nY-unsplash.jpg'
 import {
   Container,
