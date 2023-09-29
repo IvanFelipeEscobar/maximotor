@@ -56,7 +56,7 @@ export default function Footer() {
         spacing={4}
         justify={{ base: 'center', md: 'space-between' }}
         align={{ base: 'center', md: 'center' }}>
-        <Text>© 2022 Chakra Templates. All rights reserved</Text>
+        <Text>© 2022 made by Ivan Felipe Escobar for Maximotor. All rights reserved</Text>
         <Stack direction={'row'} spacing={6}>
           <SocialButton label={'Twitter'} href={'#'}>
             <FaTwitter />
