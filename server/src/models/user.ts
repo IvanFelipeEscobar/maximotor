@@ -1,5 +1,6 @@
 import { modelOptions, prop, getModelForClass } from "@typegoose/typegoose";
 import { Vehicle } from "./vehicles";
+import bcrypt from "bcrypt";
 @modelOptions({
   schemaOptions: {
     timestamps: true,
@@ -29,6 +30,11 @@ export class User {
 
   @prop({ type: () => [Vehicle] })
   public cars?: Vehicle[];
+
+  // public static async verifyPassword(password:string) {
+  //   return bcrypt.compare(password, this.password)
+  // }
+  }
 }
 
 export const user = getModelForClass(User);
