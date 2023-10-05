@@ -22,13 +22,13 @@ module.exports = {
     async createUser(req: Request, res: Response){
         try {
             const newUser = await user.create(req.body)
-            if(!newUser) return res.json(400).json({message: `something went wrong!!!`});
+            if(!newUser) return res.json(400).json({message: `something went wrong!!! User authentication failed`});
             const token = signToken(newUser)
             res.json({token, newUser})
             
         } catch (error) {
             console.error(error)
-            return res.status(500).json({ message: 'server error, review uesr info )' })
+            return res.status(500).json({ message: 'server error, review user info )' })
         }
 
     },
@@ -40,10 +40,15 @@ module.exports = {
                     {email: req.body.email}
                 ]
             })
-            if(!loggedUser) return res.json(400).json({message: `something went wrong!!!`})
-            //verify password LOGIC!?!?!??!?!??!?!?!?!!??!?!!?
+            if(!loggedUser) return res.json(400).json({message: `something went wrong!!! user not found, review input data`})
+            const pWord = await loggedUser.verifyPassword(req.body.password)
+            if (!pWord) return res.status(400).json({ message: 'failed to authneticate user, Wrong password!' })
+            const token = signToken(loggedUser)
+            res.status(200).json({token, loggedUser})
+
         } catch (error) {
-            
+            console.error(error)
+            res.status(500).json( { message: `Server error`})
         }
     }
 
