@@ -52,10 +52,7 @@ module.exports = {
         }
     }
 
-    // async editUser() { 
+    // async editUser() {},
+    // async deleteUser(){}
 
-    // },
-    // async deleteUser(){
-
-    // }
 }
