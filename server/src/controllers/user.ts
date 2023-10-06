@@ -3,6 +3,7 @@ import {Request, Response} from 'express'
 import { signToken } from "../utils/auth";
 
 module.exports = {
+    
     async getUser(req: Request , res: Response){
         try {
         const activeUser = await user.findOne(
@@ -23,6 +24,7 @@ module.exports = {
         try {
             const newUser = await user.create(req.body)
             if(!newUser) return res.json(400).json({message: `something went wrong!!! User authentication failed`});
+
             const token = signToken(newUser)
             res.json({token, newUser})
             
@@ -32,6 +34,7 @@ module.exports = {
         }
 
     },
+
     async login(req: Request, res: Response) {
         try {
             const loggedUser = await user.findOne({
