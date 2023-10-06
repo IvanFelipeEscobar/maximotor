@@ -1,8 +1,8 @@
 import express from 'express'
-const itemRouter = require(`./itemsRouter`)
+const userRoute = require(`./user-route`)
 const router = express.Router()
 
-router.use(`/items`, itemRouter)
+router.use(`/users`, userRoute)
 
 module.exports = router
 
