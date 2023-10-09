@@ -8,8 +8,8 @@ const {
 
 const router = express.Router()
 
-router.route(`/`).post(createUser)  
+router.route(`/signup`).post(createUser)  
 router.route('/login').post(login)
 router.route(`/:userId`).get(getUser)
-
+ 
 module.exports = router
