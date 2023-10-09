@@ -3,12 +3,9 @@ import { modelOptions, prop, getModelForClass } from "@typegoose/typegoose";
     schemaOptions: {
       timestamps: true,
     }
-  })
+  })  
   
 export class Vehicle {
-
-  @prop()
-  public _id?: string;
 
   @prop({ required: true })
   public year!: number;
@@ -22,3 +19,4 @@ export class Vehicle {
   @prop()
   public mileage?: number;
 };
+ export const vehicle = getModelForClass(Vehicle)

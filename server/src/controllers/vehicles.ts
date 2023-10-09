@@ -1,13 +1,15 @@
 import {Request, Response} from 'express'
 import { user } from '../models/user'
+import { vehicle } from '../models/vehicles'
 
 
 module.exports = {
     async addVehicle( req: Request, res: Response){
         try {
+            const addCar = await vehicle.create(req.body)
             const newVehicle = await user.findOneAndUpdate(
-                {_id: req.user._id},
-                {$addToSet: { cars: req.body}},
+                {email: req.user.email},
+                {$addToSet: { cars: addCar}},
                 {new: true, runValidators: true}
             )
             if(!newVehicle) return res.status(401).json({message: `Failed to add vehicle, check vehicle input`})
