@@ -25,8 +25,13 @@ module.exports = {
             const newUser = await user.create(req.body)
             if(!newUser) return res.json(400).json({message: `something went wrong!!! User authentication failed`});
 
-            const token = signToken(newUser)
-            res.json({token, newUser})
+            res.json({
+                _id: newUser._id,
+                username: newUser.username,
+                email: newUser.email,
+                phone: newUser.phone,
+                token: signToken(newUser)
+            })
             
         } catch (error) {
             console.error(error)
@@ -46,8 +51,14 @@ module.exports = {
             if(!loggedUser) return res.json(400).json({message: `something went wrong!!! user not found, review input data`})
             const pWord = await loggedUser.verifyPassword(req.body.password)
             if (!pWord) return res.status(400).json({ message: 'failed to authneticate user, Wrong password!' })
-            const token = signToken(loggedUser)
-            res.status(200).json({token, loggedUser})
+            
+            res.status(200).json({
+                _id: loggedUser._id,
+                username: loggedUser.username,
+                email: loggedUser.email,
+                phone: loggedUser.phone,
+                token: signToken(loggedUser)
+            })
 
         } catch (error) {
             console.error(error)

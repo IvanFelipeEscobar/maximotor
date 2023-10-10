@@ -31,8 +31,8 @@ export class User {
   @prop()
   public address?: string;
 
-  @prop({ required: true, default: false })
-  public isAdmin!: boolean;
+  // @prop({ required: true, default: false })
+  // public isAdmin!: boolean;
 
   @prop({ type: () => [Vehicle] })
   public cars?: Vehicle[];
