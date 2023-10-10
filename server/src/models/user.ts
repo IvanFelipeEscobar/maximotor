@@ -14,6 +14,7 @@ import bcrypt from "bcrypt";
    } })
 
 export class User {
+  public _id?: string
 
   @prop({ required: true, unique: true })
   public username!: string;
