@@ -14,6 +14,7 @@ import bcrypt from "bcrypt";
    } })
 
 export class User {
+  public _id?: string
 
   @prop({ required: true, unique: true })
   public username!: string;
@@ -30,8 +31,8 @@ export class User {
   @prop()
   public address?: string;
 
-  @prop({ required: true, default: false })
-  public isAdmin!: boolean;
+  // @prop({ required: true, default: false })
+  // public isAdmin!: boolean;
 
   @prop({ type: () => [Vehicle] })
   public cars?: Vehicle[];

@@ -2,15 +2,16 @@ import jwt from "jsonwebtoken";
 import { NextFunction, Request, Response } from "express";
 import { User } from "../models/user";
 
-const secret = `yo!I'maSecret`;
+const secret = process.env.JWT_SECRET || `yo!I'maSecret`;
 const expiration = "1h";
 
 export const signToken = (user: User) => {
   return jwt.sign(
     {
+      _id: user._id,
       username: user.username,
       email: user.email,
-      isAdmin: user.isAdmin,
+      // isAdmin: user.isAdmin,
     },
     secret,
     {
