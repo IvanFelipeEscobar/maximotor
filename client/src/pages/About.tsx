@@ -11,7 +11,7 @@ import {
 import belt from "/chad-kirchoff-xe-e69j6-Ds-unsplash.jpg";
 export default function About() {
   return (
-    <Container maxW={"7xl"}>
+    <Container maxW={"7xl"} id={"about"}>
       <Stack
         align={"center"}
         spacing={{ base: 8, md: 10 }}
