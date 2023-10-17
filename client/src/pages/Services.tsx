@@ -78,6 +78,7 @@ export default function Services() {
       position={"relative"}
       width={"full"}
       overflow={"hidden"}
+      id={'services'}
     >
       {/* CSS files for react-slick */}
       <link

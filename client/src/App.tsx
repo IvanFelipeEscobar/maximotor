@@ -5,6 +5,7 @@ import Login from './components/Login'
 import Navbar from './components/Navbar'
 import Signup from './components/Signup'
 import About from './pages/About'
+import Contact from './pages/Contact'
 import Hero from './pages/Hero'
 import Services from './pages/Services'
 
@@ -16,6 +17,7 @@ function App() {
      <Hero />
      <Services/>
      <About />
+     <Contact/>
      <hr/>
      <Login/>
      <Signup/>

@@ -13,7 +13,7 @@ import {
 
 export default function Hero() {
   return (
-    <Container maxW={'7xl'}>
+    <Container maxW={'7xl'} id={"hero"}>
       <Stack
         align={'center'}
         spacing={{ base: 8, md: 10 }}
@@ -38,7 +38,7 @@ export default function Hero() {
                 bg: 'red.400',
                 zIndex: -1,
               }}>
-              Vehicle repair & maintenance
+              Vehicle Repair & Maintenance
             </Text>
             <br />
             <Text as={'span'} color={'red.400'}>
