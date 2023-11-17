@@ -30,10 +30,10 @@ export default function Contact() {
         p={6}
         my={12}>
         <Heading lineHeight={1.1} fontSize={{ base: '2xl', sm: '3xl' }}>
-          User Profile Edit
+         Contact Us
         </Heading>
-        <FormControl id="userName" isRequired>
-          <FormLabel>User name</FormLabel>
+        <FormControl id="name" isRequired>
+          <FormLabel>What is your name?</FormLabel>
           <Input
             placeholder="UserName"
             _placeholder={{ color: 'gray.500' }}
@@ -49,7 +49,7 @@ export default function Contact() {
           />
         </FormControl>
         <FormControl id="text">
-          <FormLabel>Password</FormLabel>
+          <FormLabel>What can we assist you with?</FormLabel>
           <Textarea
             placeholder=""
             resize={'vertical'}

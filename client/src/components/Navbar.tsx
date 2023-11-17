@@ -13,34 +13,13 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
 
-interface Props {
-  children: React.ReactNode;
-}
-
 const Links = [
   {a: "About us", b: "#about"}, 
   {a:"Contact us", b:'#contact'}, 
   {a:"Services", b:'#services'}
 ]
 
-const NavLink = (props: Props) => {
-  const { children } = props;
-  return (
-    <Box
-      as="a"
-      px={2}
-      py={1}
-      rounded={"md"}
-      _hover={{
-        textDecoration: "none",
-        bg: useColorModeValue("gray.200", "gray.700"),
-      }}
-      href={"#"}
-    >
-      {children}
-    </Box>
-  );
-};
+
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -57,14 +36,25 @@ export default function Navbar() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={"center"}>
-            <Box>Maximotor</Box>
+            <Box><a href={'/'}>Maximotor</a></Box>
             <HStack
               as={"nav"}
               spacing={4}
               display={{ base: "none", md: "flex" }}
             >
               {Links.map((link) => (
-                <NavLink key={link.a}><a href={link.b}>{link.a}</a></NavLink>
+                  <Link   as="a"
+                  px={2}
+                  py={1}
+                  rounded={"md"}
+                  _hover={{
+                    textDecoration: "none",
+                    bg: 
+                    // useColorModeValue(
+                      "gray.200", 
+                      // "gray.700"),
+                  }}key={link.a} href={link.b}>{link.a}</Link>
+                  // </NavLink>
               ))}
             </HStack>
           </HStack>
@@ -87,7 +77,7 @@ export default function Navbar() {
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
               {Links.map((link) => (
-                <NavLink key={link.a}><Link href={link.b}>{link.a}</Link></NavLink>
+                  <Link key={link.a} href={link.b}>{link.a}</Link>
               ))}
             </Stack>
           </Box>
