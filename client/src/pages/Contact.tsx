@@ -33,7 +33,7 @@ export default function Contact() {
          Contact Us
         </Heading>
         <FormControl id="name" isRequired>
-          <FormLabel>User name</FormLabel>
+          <FormLabel>What is your name?</FormLabel>
           <Input
             placeholder="UserName"
             _placeholder={{ color: 'gray.500' }}

@@ -20,6 +20,11 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
+  const [userData, setUserData] = useState({username:``, email: ``, phone: ``, password:``})
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+         const { name, value } = e.target
+         setUserData({...userData, [name]: value})
+     }
 
   return (
     <Flex
@@ -41,25 +46,38 @@ export default function Signup() {
           p={8}
         >
           <Stack spacing={4}>
-            <FormControl id="userName" isRequired>
+            <FormControl
+             id="username" 
+             isRequired>
               <FormLabel>User Name</FormLabel>
-              <Input type="text" />
+              <Input type="text" name='username'
+                    onChange={handleInput}
+                    value={userData.username}/>
             </FormControl>
 
-            <FormControl id="lastName" isRequired>
+            <FormControl id="phone"
+             isRequired>
               <FormLabel>Phone Number</FormLabel>
-              <Input type="text" />
+              <Input type="text" name='phone'
+                    onChange={handleInput}
+                    value={userData.phone}/>
             </FormControl>
 
-            <FormControl id="email" isRequired>
+            <FormControl id="email" 
+             isRequired>
               <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+              <Input type="email" name='email'
+                    onChange={handleInput}
+                    value={userData.email}/>
             </FormControl>
 
-            <FormControl id="password" isRequired>
+            <FormControl id="password"
+            isRequired>
               <FormLabel>Password</FormLabel>
               <InputGroup>
-                <Input type={showPassword ? "text" : "password"} />
+                <Input type={showPassword ? "text" : "password"}  name='password'
+                    onChange={handleInput}
+                    value={userData.password}/>
                 <InputRightElement h={"full"}>
                   <Button
                     variant={"ghost"}
@@ -87,12 +105,13 @@ export default function Signup() {
             </Stack>
             <Stack pt={6}>
               <Text align={"center"}>
-                Already a user? <Link color={"blue.400"}>Login</Link>
+                Already have an account? <Link color={"blue.400"}>Login</Link>
               </Text>
             </Stack>
           </Stack>
         </Box>
       </Stack>
+      
     </Flex>
   );
 }
