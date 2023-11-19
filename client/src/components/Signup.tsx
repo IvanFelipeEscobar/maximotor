@@ -19,7 +19,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-
+import { createUser } from "../utils/api-requests";
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [userData, setUserData] = useState({
@@ -34,9 +34,17 @@ export default function Signup() {
     setUserData({ ...userData, [name]: value });
   };
 
-  // const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await createUser(userData) 
+      if(!response.ok)throw new Error('something went wrong in the sign up process')
+      console.log(response)
+    } catch (error) {
+      console.error(error)
+    }
 
-  // };
+  };
 
   return (
     <Flex
@@ -126,7 +134,7 @@ export default function Signup() {
                     userData.phone
                   )
                 }
-                onClick={()=>{}}
+                onClick={handleSubmit}
                 loadingText="Submitting"
                 size="lg"
                 bg={"blue.400"}
