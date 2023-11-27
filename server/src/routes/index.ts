@@ -3,5 +3,4 @@ const apiRoutes = require(`./api`)
 export const router = express.Router()
 
 router.use(`/api`, apiRoutes)
-router.use((req: Request, res: Response) => res.send(`Whoops, that's the wrong route`))
-// module.exports = router
+router.use((req: Request, res: Response) => res.json(`Whoops, that's the wrong route`))
