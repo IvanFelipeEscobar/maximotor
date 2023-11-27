@@ -39,7 +39,8 @@ export default function Signup() {
     try {
       const response = await createUser(userData) 
       if(!response.ok)throw new Error('something went wrong in the sign up process')
-      console.log(response)
+      const newUser = await response.json()
+      console.log(newUser)
     } catch (error) {
       console.error(error)
     }

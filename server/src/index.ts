@@ -1,8 +1,7 @@
 import express from "express";
 import path from "path";
 import  {db} from "./config/connection";
-
-const routes = require(`./routes`);
+import {router} from './routes'
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -14,7 +13,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
 }
 
-app.use(routes);
+app.use(router);
 db.once(`open`, () => {
   app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
 });
