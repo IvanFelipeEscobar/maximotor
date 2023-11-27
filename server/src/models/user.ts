@@ -17,25 +17,11 @@ export class User {
   public _id?: string
 
   @prop({ required: true, unique: true })
-  public username!: string;
-
-  @prop({ required: true })
-  public phone?: string;
-
-  @prop({ required: true, unique: true })
   public email!: string;
 
   @prop({ required: true })
   public password!: string;
 
-  @prop()
-  public address?: string;
-
-  // @prop({ required: true, default: false })
-  // public isAdmin!: boolean;
-
-  @prop({ type: () => [Vehicle] })
-  public cars?: Vehicle[];
 
   // Method to verify the password
   async verifyPassword(this: DocumentType<User>, password: string): Promise<boolean> {

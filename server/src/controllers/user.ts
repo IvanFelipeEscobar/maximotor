@@ -27,9 +27,7 @@ module.exports = {
 
             res.json({
                 _id: newUser._id,
-                username: newUser.username,
                 email: newUser.email,
-                phone: newUser.phone,
                 token: signToken(newUser)
             })
             
@@ -54,9 +52,7 @@ module.exports = {
             
             res.status(200).json({
                 _id: loggedUser._id,
-                username: loggedUser.username,
                 email: loggedUser.email,
-                phone: loggedUser.phone,
                 token: signToken(loggedUser)
             })
 
