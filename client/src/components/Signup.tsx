@@ -5,7 +5,6 @@ import {
   Box,
   FormControl,
   FormLabel,
-
   FormErrorMessage,
   Input,
   InputGroup,
@@ -23,9 +22,7 @@ import { createUser } from "../utils/api-requests";
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [userData, setUserData] = useState({
-    username: ``,
     email: ``,
-    phone: ``,
     password: ``,
   });
 
@@ -67,29 +64,7 @@ export default function Signup() {
           p={8}
         >
           <Stack spacing={4}>
-            <FormControl id="username" 
-                isInvalid={userData.username === ''}>
-              <FormLabel>User Name</FormLabel>
-              <Input
-                type="text"
-                name="username"
-                onChange={(handleInput)}
-                value={userData.username}
-              />
-                <FormErrorMessage>Please enter user name</FormErrorMessage>
-              
-            </FormControl>
 
-            <FormControl id="phone" isInvalid={userData.phone === ''}>
-              <FormLabel>Phone Number</FormLabel>
-              <Input
-                type="text"
-                name="phone"
-                onChange={handleInput}
-                value={userData.phone}
-              />
-              <FormErrorMessage>Please enter a phone number</FormErrorMessage>
-            </FormControl>
 
             <FormControl id="email" isInvalid={userData.email === ''}>
               <FormLabel>Email address</FormLabel>
@@ -129,10 +104,8 @@ export default function Signup() {
               <Button
                 disabled={
                   !(
-                    userData.username ||
                     userData.email ||
-                    userData.password ||
-                    userData.phone
+                    userData.password 
                   )
                 }
                 onClick={handleSubmit}

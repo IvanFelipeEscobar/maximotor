@@ -1,11 +1,9 @@
 interface UserInput  {
-    username: string
     email: string
-    phone: string
     password: string
 }
 export const createUser = (userData: UserInput) => {
-    return fetch(`/api/users`, {
+    return fetch(`http://localhost:3001/api/users/signup`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
