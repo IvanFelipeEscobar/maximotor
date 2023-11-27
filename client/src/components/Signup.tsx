@@ -37,7 +37,7 @@ export default function Signup() {
       const response = await createUser(userData) 
       if(!response.ok)throw new Error('something went wrong in the sign up process')
       const newUser = await response.json()
-      console.log(newUser)
+      localStorage.setItem('webToken', newUser.token)
     } catch (error) {
       console.error(error)
     }
