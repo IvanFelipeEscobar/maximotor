@@ -22,16 +22,6 @@ export class User {
   @prop({ required: true })
   public password!: string;
 
-  public address?: string;
-
-  public phone?: string;
-
-  public fName?: string;
-
-
-
-  @prop({ type: () => [Vehicle] })
-  public cars?: Vehicle[];
 
   // Method to verify the password
   async verifyPassword(this: DocumentType<User>, password: string): Promise<boolean> {
