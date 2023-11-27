@@ -1,12 +1,11 @@
 import { modelOptions, prop, getModelForClass, DocumentType, pre } from "@typegoose/typegoose";
-import { Vehicle } from "./vehicles";
 import bcrypt from "bcrypt";
 @modelOptions({
   schemaOptions: {
     timestamps: true,
   },
 })
-
+//using mongoose middleware ('pre' hook) to encrypt password
 @pre<User>(`save`, async function(this: DocumentType<User>){
      if (this.isNew || this.isModified("password")) {
       const saltRounds = 10;
