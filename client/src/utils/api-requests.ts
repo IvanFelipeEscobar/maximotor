@@ -2,8 +2,8 @@ interface UserInput  {
     email: string
     password: string
 }
-export const createUser = (userData: UserInput) => {
-    return fetch(`http://localhost:3001/api/users/signup`, {
+export const createUser = async (userData: UserInput) => {
+    return await fetch(`http://localhost:3001/api/users/signup`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

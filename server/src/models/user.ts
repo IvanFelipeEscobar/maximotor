@@ -4,7 +4,8 @@ import bcrypt from "bcrypt";
   schemaOptions: {
     timestamps: true,
   },
-})
+}) 
+
 //using mongoose middleware ('pre' hook) to encrypt password
 @pre<User>(`save`, async function(this: DocumentType<User>){
      if (this.isNew || this.isModified("password")) {

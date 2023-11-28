@@ -9,9 +9,7 @@ export const signToken = (user: User) => {
   return jwt.sign(
     {
       _id: user._id,
-      username: user.username,
       email: user.email,
-      // isAdmin: user.isAdmin,
     },
     secret,
     {
@@ -25,24 +23,16 @@ export const authMiddleware = (
   res: Response,
   next: NextFunction
 ) => {
-  let token = req.query.token || req.headers.authorization;
-
-  if (req.headers.authorization) {
-    token = (token as string).split(" ").pop()?.trim();
-  }
+  let token = req.headers.authorization?.replace(/^Bearer\s/, '')
   if (!token) {
     return res.status(401).json({ message: "Unauthorized, please sign in" });
   }
   try {
-    const data = jwt.verify(token as string, secret, { maxAge: expiration });
+    const data = jwt.verify(token as string, secret);
     req.user = data as {
         _id: string
-        username: string
-        phone: string
         email: string
         password: string
-        address: string
-        isAdmin: boolean
     }
   } catch (error) {
     console.error(error);
