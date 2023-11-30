@@ -11,13 +11,12 @@ import {
   Stack,
   Link,
   Menu,
-  Avatar,
   MenuButton,
   MenuList,
   MenuItem,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
-
+import { Auth } from "../utils/auth";
 const Links = [
   {a: "About us", b: "#about"}, 
   {a:"Contact us", b:'#contact'}, 
@@ -41,7 +40,7 @@ export default function Navbar() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={"center"}>
-            <Box><a href={'/'}>Maximotor</a></Box>
+            <Box><Link href={'/'}>Maximotor</Link></Box>
             <HStack
               as={"nav"}
               spacing={4}
@@ -63,37 +62,24 @@ export default function Navbar() {
               ))}
             </HStack>
           </HStack>
-          <Flex alignItems={"center"}>
-            <Button
-              variant={"solid"}
+          <Flex alignItems={'center'}>
+            <Menu>
+              <MenuButton
+                as={Button}
+                variant={"solid"}
               colorScheme={"red"}
               bg={"red.400"}
               _hover={{ bg: "red.500" }}
               size={"sm"}
               mr={4}
-              leftIcon={<AddIcon />}
-            >
-              Schedule
-            </Button>
-          </Flex>
-          <Flex alignItems={'center'}>
-            <Menu>
-              <MenuButton
-                as={Button}
-                rounded={'full'}
-                variant={'link'}
-                cursor={'pointer'}
-                minW={0}>
-                <Avatar
-                  size={'sm'}
-                  src={
-                    'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
-                  }
-                />
+              leftIcon={<AddIcon />}>
+                { Auth.isLoggedIn() ? ('Log out') : ('Sign up / Login') }
               </MenuButton>
               <MenuList>
-                <MenuItem>Link 1</MenuItem>
-                <MenuItem>Link 2</MenuItem>
+                { Auth.isLoggedIn() 
+                  ? (<MenuItem><Button onClick={() => Auth.logout()}>Logout</Button></MenuItem>)
+                  : ( <><MenuItem><Link href={"/login"}>Login</Link></MenuItem>
+                <MenuItem><Link href={"/signup"}>Sign up</Link></MenuItem></>)}
               </MenuList>
             </Menu>
           </Flex>

@@ -12,6 +12,8 @@ import {
   Heading,
   // Text,
   useColorModeValue,
+  Text,
+  Link,
 } from '@chakra-ui/react'
 
 export default function Login() {
@@ -57,6 +59,11 @@ export default function Login() {
                 }}>
                 Sign in
               </Button>
+            </Stack>
+            <Stack pt={6}>
+              <Text align={"center"}>
+                First time here? <Link color={"blue.400"} href={'/signup'}>create an account here!</Link>
+              </Text>
             </Stack>
           </Stack>
         </Box>
