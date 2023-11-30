@@ -1,5 +1,4 @@
 "use client";
-
 import {
   Flex,
   Box,
@@ -19,6 +18,7 @@ import {
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { createUser } from "../utils/api-requests";
+import {Auth} from '../utils/auth'
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [userData, setUserData] = useState({
@@ -33,15 +33,20 @@ export default function Signup() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      const response = await createUser(userData) 
-      if(!response.ok)throw new Error('something went wrong in the sign up process')
-      const newUser = await response.json()
-      localStorage.setItem('webToken', newUser.token)
-    } catch (error) {
-      console.error(error)
+    if (!userData.email || !userData.password) {
+      console.error("Email and password are required.");
+      return;
     }
-
+    try {
+      console.log(userData)
+      const response = await createUser(userData);
+      if (!response.ok)
+        throw new Error("something went wrong in the sign up process");
+      const newUser = await response.json();
+      Auth.login(newUser.token)
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -64,9 +69,7 @@ export default function Signup() {
           p={8}
         >
           <Stack spacing={4}>
-
-
-            <FormControl id="email" isInvalid={userData.email === ''}>
+            <FormControl id="email" isInvalid={userData.email === ""}>
               <FormLabel>Email address</FormLabel>
               <Input
                 type="email"
@@ -77,14 +80,13 @@ export default function Signup() {
               <FormErrorMessage>Please enter a valid email</FormErrorMessage>
             </FormControl>
 
-            <FormControl id="password" isInvalid={userData.password === ''}>
+            <FormControl id="password" isInvalid={userData.password === ""}>
               <FormLabel>Password</FormLabel>
               <InputGroup>
                 <Input
                   type={showPassword ? "text" : "password"}
                   name="password"
-                  onChange={
-                    handleInput}
+                  onChange={handleInput}
                   value={userData.password}
                 />
                 <InputRightElement h={"full"}>
@@ -102,12 +104,7 @@ export default function Signup() {
             </FormControl>
             <Stack spacing={10} pt={2}>
               <Button
-                disabled={
-                  !(
-                    userData.email ||
-                    userData.password 
-                  )
-                }
+                disabled={!(userData.email || userData.password)}
                 onClick={handleSubmit}
                 loadingText="Submitting"
                 size="lg"

@@ -8,7 +8,7 @@ module.exports = {
         try {
         const activeUser = await user.findOne(
             {
-                username: req.params.username
+                email: req.params.email
             }
         )
         return !activeUser 
@@ -21,9 +21,10 @@ module.exports = {
         }
     },
     async createUser(req: Request, res: Response){
+        console.log(req.body);
         try {
             const newUser = await user.create(req.body)
-            if(!newUser) return res.json(400).json({message: `something went wrong!!! User authentication failed`});
+            if(!newUser) return res.status(400).json({message: `something went wrong!!! User authentication failed`});
 
             res.json({
                 _id: newUser._id,
