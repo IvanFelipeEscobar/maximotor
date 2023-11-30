@@ -1,66 +1,123 @@
-'use client'
+"use client";
 
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import {
   Flex,
   Box,
   FormControl,
   FormLabel,
   Input,
-  // Checkbox,
   Stack,
   Button,
   Heading,
-  // Text,
   useColorModeValue,
-} from '@chakra-ui/react'
+  Text,
+  Link,
+  InputGroup,
+  InputRightElement,
+  FormErrorMessage,
+} from "@chakra-ui/react";
+import { useState } from "react";
+import { signIn } from "../utils/api-requests";
+import { Auth } from "../utils/auth";
 
 export default function Login() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [userData, setUserData] = useState({
+    email: ``,
+    password: ``,
+  });
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUserData({ ...userData, [name]: value });
+  };
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!userData.email || !userData.password) {
+      console.error("Email and password are required.");
+      return;
+    }
+    try {
+      const response = await signIn(userData);
+      if (!response.ok)
+        throw new Error("something went wrong in the sign up process");
+      const newUser = await response.json();
+      Auth.login(newUser.token)
+    } catch (error) {
+      console.error(error);
+    }
+  }
   return (
-    <Flex
-      minH={'100vh'}
-      align={'center'}
-      justify={'center'}
-      // bg={useColorModeValue('gray.500', 'gray.800')}
-      >
-      <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
-        <Stack align={'center'}>
-          <Heading fontSize={'4xl'} color={'aliceblue'}>Sign in to your account</Heading>
-         
+    <Flex minH={"100vh"} align={"center"} justify={"center"}>
+      <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+        <Stack align={"center"}>
+          <Heading fontSize={"4xl"} color={"aliceblue"}>
+            Sign in to your account
+          </Heading>
         </Stack>
         <Box
-          rounded={'lg'}
-          bg={useColorModeValue('white', 'gray.700')}
-          boxShadow={'lg'}
-          p={8}>
+          rounded={"lg"}
+          bg={useColorModeValue("white", "gray.700")}
+          boxShadow={"lg"}
+          p={8}
+        >
           <Stack spacing={4}>
-            <FormControl id="email">
+            <FormControl id="email" isInvalid={userData.email === ""}>
               <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+              <Input
+                type="email"
+                name="email"
+                onChange={handleInput}
+                value={userData.email}
+              />
+              <FormErrorMessage>Please enter a valid email</FormErrorMessage>
             </FormControl>
-            <FormControl id="password">
+            <FormControl id="password" isInvalid={userData.password === ""}>
               <FormLabel>Password</FormLabel>
-              <Input type="password" />
+              <InputGroup>
+                <Input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  onChange={handleInput}
+                  value={userData.password}
+                />
+                <InputRightElement h={"full"}>
+                  <Button
+                    variant={"ghost"}
+                    onClick={() =>
+                      setShowPassword((showPassword) => !showPassword)
+                    }
+                  >
+                    {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+              <FormErrorMessage>please enter valid passsword</FormErrorMessage>
             </FormControl>
             <Stack spacing={10}>
-              {/* <Stack
-                direction={{ base: 'column', sm: 'row' }}
-                align={'start'}
-                justify={'space-between'}>
-                <Checkbox>Remember me</Checkbox>
-                <Text color={'blue.400'}>Forgot password?</Text>
-              </Stack> */}
               <Button
-                bg={'blue.400'}
-                color={'white'}
+                bg={"blue.400"}
+                color={"white"}
                 _hover={{
-                  bg: 'blue.500',
-                }}>
+                  bg: "blue.500",
+                }}
+                onClick={handleSubmit}
+              >
                 Sign in
               </Button>
+            </Stack>
+
+            <Stack pt={6}>
+              <Text align={"center"}>
+                First time here?{" "}
+                <Link color={"blue.400"} href={"/signup"}>
+                  create an account here!
+                </Link>
+              </Text>
             </Stack>
           </Stack>
         </Box>
       </Stack>
     </Flex>
-  )
+  );
 }

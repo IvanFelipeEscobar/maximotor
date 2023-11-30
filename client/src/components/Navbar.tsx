@@ -10,9 +10,13 @@ import {
   useColorModeValue,
   Stack,
   Link,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
-
+import { Auth } from "../utils/auth";
 const Links = [
   {a: "About us", b: "#about"}, 
   {a:"Contact us", b:'#contact'}, 
@@ -36,7 +40,7 @@ export default function Navbar() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={"center"}>
-            <Box><a href={'/'}>Maximotor</a></Box>
+            <Box><Link href={'/'}>Maximotor</Link></Box>
             <HStack
               as={"nav"}
               spacing={4}
@@ -58,20 +62,29 @@ export default function Navbar() {
               ))}
             </HStack>
           </HStack>
-          <Flex alignItems={"center"}>
-            <Button
-              variant={"solid"}
+          <Flex alignItems={'center'}>
+            <Menu>
+              <MenuButton
+                as={Button}
+                variant={"solid"}
               colorScheme={"red"}
               bg={"red.400"}
               _hover={{ bg: "red.500" }}
               size={"sm"}
               mr={4}
-              leftIcon={<AddIcon />}
-            >
-              Schedule
-            </Button>
+              leftIcon={<AddIcon />}>
+                { Auth.isLoggedIn() ? ('Log out') : ('Sign up / Login') }
+              </MenuButton>
+              <MenuList>
+                { Auth.isLoggedIn() 
+                  ? (<MenuItem><Button onClick={() => Auth.logout()}>Logout</Button></MenuItem>)
+                  : ( <><MenuItem><Link href={"/login"}>Login</Link></MenuItem>
+                <MenuItem><Link href={"/signup"}>Sign up</Link></MenuItem></>)}
+              </MenuList>
+            </Menu>
           </Flex>
         </Flex>
+        
 
         {isOpen ? (
           <Box pb={4} display={{ md: "none" }}>

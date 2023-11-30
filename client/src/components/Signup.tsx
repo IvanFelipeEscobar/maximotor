@@ -119,7 +119,7 @@ export default function Signup() {
             </Stack>
             <Stack pt={6}>
               <Text align={"center"}>
-                Already have an account? <Link color={"blue.400"}>Login</Link>
+                Already have an account? <Link color={"blue.400"} href={"/login"}>Login</Link>
               </Text>
             </Stack>
           </Stack>
