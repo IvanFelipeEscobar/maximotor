@@ -1,8 +1,8 @@
 
-import About from './About'
-import Contact from './Contact'
-import Hero from './Hero'
-import Services from './Services'
+import About from '../components/About'
+import Contact from '../components/Contact'
+import Hero from '../components/Hero'
+import Services from '../components/Services'
 
 
 export default function Landing() {

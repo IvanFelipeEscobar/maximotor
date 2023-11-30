@@ -19,6 +19,7 @@ export default function Contact() {
       align={'center'}
       justify={'center'}
       id={'contact'}
+      m={'2rem'}
       >
       <Stack
         spacing={4}

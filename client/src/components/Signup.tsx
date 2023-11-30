@@ -18,7 +18,7 @@ import {
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { createUser } from "../utils/api-requests";
-// import Auth from '../utils/auth'
+import {Auth} from '../utils/auth'
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [userData, setUserData] = useState({
@@ -43,11 +43,9 @@ export default function Signup() {
       if (!response.ok)
         throw new Error("something went wrong in the sign up process");
       const newUser = await response.json();
-      // Auth.login
-      console.log(newUser);
+      Auth.login(newUser.token)
     } catch (error) {
       console.error(error);
-      throw new Error('sign up submit failed in handle submit logic')
     }
   };
 
