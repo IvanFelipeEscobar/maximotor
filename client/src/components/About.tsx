@@ -42,7 +42,7 @@ export default function About() {
               About us
             </Text>
           </Heading>
-          <Text color={"gray.400"}>
+          <Text color={"gray.400"} fontSize={"lg"}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget
             justo nec urna feugiat vehicula. Aliquam erat volutpat. Suspendisse
             potenti. Sed auctor laoreet libero, nec porttitor dolor vulputate

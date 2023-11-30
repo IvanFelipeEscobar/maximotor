@@ -132,13 +132,14 @@ export default function Services() {
           >
             <AbsoluteCenter>
               <Box
-                // maxW={"445px"}
+                minW={"23rem"}
                 w={"full"}
                 boxShadow={"2xl"}
                 rounded={"md"}
-                p={6}
+                p={8}
                 bg={"rgba(0,0,0,0.8)"}
                 overflow={"hidden"}
+                m={1}
               >
                 <Stack>
                  
@@ -150,7 +151,7 @@ export default function Services() {
                   >
                      {service.service}
                   </Heading>
-                  <Text color={"gray.200"}>
+                  <Text fontSize={'lg'} color={"gray.200"}>
                     {service.description}
                   </Text>
                 </Stack>
