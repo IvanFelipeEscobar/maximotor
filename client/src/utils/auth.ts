@@ -7,11 +7,6 @@ class AuthService {
 
   removeToken = () => localStorage.removeItem('id_token');
 
-  getDecodedToken = () => {
-    const token = this.getToken();
-    return token ? decode(token) : null;
-  };
-
   isTokenExpired = (token: string) => {
     if (!token) return true;
     const decoded = decode(token);
@@ -32,14 +27,6 @@ class AuthService {
   logout = () => {
     this.removeToken();
     window.location.assign('/');
-  };
-
-  handleAuthentication = (token: string) => {
-    if (token) {
-      this.login(token);
-    } else {
-      this.logout();
-    }
   };
 }
 
