@@ -7,7 +7,7 @@ import Landing from "./pages/Landing.tsx";
 import Signup from "./components/Signup.tsx";
 import Login from "./components/Login.tsx";
 import Services from "./components/Services.tsx";
-import Contact from "./components/Contact.tsx";
+import UserDashboard from "./pages/User-Dashboard.tsx";
 const router = createBrowserRouter([
   {
     path: '/',
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
       {path: '/signup', element: <Signup/>}, //todo: signup/login need to be styled
       {path: '/login', element: <Login/>},
       {path: '/appointments', element: <Services/>}, //todo: make appointments page
-      {path: '/user', element: <Contact/>}
+      {path: '/user-dashboard', element: <UserDashboard/>}
     ]
   }
 ])
