@@ -14,9 +14,12 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  useColorMode,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
 import { Auth } from "../utils/auth";
+
+import { BsSun, BsMoonStarsFill } from 'react-icons/bs'
 const Links = [
   {a: "About us", b: "#about"}, 
   {a:"Contact us", b:'#contact'}, 
@@ -26,6 +29,8 @@ const Links = [
 
 
 export default function Navbar() {
+
+  const { colorMode, toggleColorMode } = useColorMode()
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -83,6 +88,13 @@ export default function Navbar() {
               </MenuList>
             </Menu>
           </Flex>
+          <Button
+        aria-label="Toggle Color Mode"
+        onClick={toggleColorMode}
+        _focus={{ boxShadow: 'none' }}
+        w="fit-content">
+        {colorMode === 'light' ? <BsMoonStarsFill /> : <BsSun />}
+      </Button>
         </Flex>
         
 
