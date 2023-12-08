@@ -21,7 +21,7 @@ import { Auth } from "../utils/auth";
 
 import { BsSun, BsMoonStarsFill } from 'react-icons/bs'
 const Links = [
-  {a: "About us", b: "#about"}, 
+  {a: "About us", b: "/#about"}, 
   {a:"Contact us", b:'#contact'}, 
   {a:"Services", b:'#services'}
 ]

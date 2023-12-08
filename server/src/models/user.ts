@@ -1,5 +1,6 @@
 import { modelOptions, prop, getModelForClass, DocumentType, pre } from "@typegoose/typegoose";
 import bcrypt from "bcrypt";
+import { UserInfo } from "./user-info";
 @modelOptions({
   schemaOptions: {
     timestamps: true,
@@ -21,6 +22,8 @@ export class User {
 
   @prop({ required: true })
   public password!: string;
+
+  public userInformation?: UserInfo
 
 
   // Method to verify the password

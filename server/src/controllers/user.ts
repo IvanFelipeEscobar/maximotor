@@ -8,7 +8,7 @@ module.exports = {
         try {
         const activeUser = await user.findOne(
             {
-                email: req.params.email
+                email: req.user.email
             }
         )
         return !activeUser 

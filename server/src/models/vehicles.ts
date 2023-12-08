@@ -19,4 +19,5 @@ export class Vehicle {
   @prop()
   public mileage?: number;
 };
+
  export const vehicle = getModelForClass(Vehicle)

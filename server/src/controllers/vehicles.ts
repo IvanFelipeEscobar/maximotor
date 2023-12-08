@@ -7,12 +7,13 @@ module.exports = {
     async addVehicle( req: Request, res: Response){
         try {
             const addCar = await vehicle.create(req.body)
+            if(!addCar)return res.status(400).json({message: 'failed to create vehicle, check input'})
             const newVehicle = await user.findOneAndUpdate(
                 {email: req.user.email},
                 {$addToSet: { cars: addCar}},
                 {new: true, runValidators: true}
             )
-            if(!newVehicle) return res.status(401).json({message: `Failed to add vehicle, check vehicle input`})
+            if(!newVehicle) return res.status(400).json({message: `Failed to add vehicle to user`})
             res.status(200).json(newVehicle)
         } catch (err) {
             console.error(err)
