@@ -1,11 +1,12 @@
-import express from 'express'
-const userRoute = require(`./user-route`)
-const vehRoute = require('./vehicle-route')
+
+import express from 'express';
+import userRoute from './user-route';
+import vehRoute from './vehicle-route';
 const router = express.Router()
 
 router.use(`/users`, userRoute)
 router.use('/vehicle', vehRoute)
 
-module.exports = router
+export default router
 
 

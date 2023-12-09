@@ -1,9 +1,7 @@
 import { Request, Response } from "express";
 import { user } from "../models/user";
 import { vehicle } from "../models/vehicles";
-
-module.exports = {
-  async addVehicle(req: Request, res: Response) {
+  export const addVehicle = async (req: Request, res: Response) =>  {
     try {
       const addCar = await vehicle.create(req.body);
       if (!addCar)
@@ -26,8 +24,9 @@ module.exports = {
         .status(500)
         .json({ message: `whoops, Server issue. get it together!` });
     }
-  },
-  async editVehicle(req: Request, res: Response) {
+  }
+  //edit veh
+  export const editVehicle = async (req: Request, res: Response) => {
     try {
       const { vehicleId } = req.params; 
       const updatedVeh = await vehicle.findOneAndUpdate(
@@ -44,8 +43,9 @@ module.exports = {
         .status(500)
         .json({ message: "server error, unable to process request" });
     }
-  },
-  async deleteVehicle(req: Request, res: Response) {
+  }
+
+ export const deleteVehicle =  async (req: Request, res: Response) => {
     try {
       const { vehicleId } = req.params;
       const deletedVehicle = await vehicle.findOneAndRemove({ _id: vehicleId });
@@ -63,5 +63,5 @@ module.exports = {
         .status(500)
         .json({ message: "server error, unable to process request" });
     }
-  },
-};
+  }
+
