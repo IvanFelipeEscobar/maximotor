@@ -1,4 +1,5 @@
 import { modelOptions, prop, getModelForClass } from "@typegoose/typegoose";
+import { Repair } from "./repair-info";
 @modelOptions({
     schemaOptions: {
       timestamps: true,
@@ -18,6 +19,9 @@ export class Vehicle {
 
   @prop()
   public mileage?: number;
+
+  @prop({type: () => [Repair]})
+  public?: Repair[]
 };
 
  export const vehicle = getModelForClass(Vehicle)

@@ -1,9 +1,7 @@
 import { Request, Response } from "express";
 import { user } from "../models/user";
 import { vehicle } from "../models/vehicles";
-
-module.exports = {
-  async addVehicle(req: Request, res: Response) {
+  export const addVehicle = async (req: Request, res: Response) =>  {
     try {
       const addCar = await vehicle.create(req.body);
       if (!addCar)
@@ -26,10 +24,11 @@ module.exports = {
         .status(500)
         .json({ message: `whoops, Server issue. get it together!` });
     }
-  },
-  async editVehicle(req: Request, res: Response) {
+  }
+  //edit veh
+  export const editVehicle = async (req: Request, res: Response) => {
     try {
-      const { vehicleId } = req.params;
+      const { vehicleId } = req.params; 
       const updatedVeh = await vehicle.findOneAndUpdate(
         { _id: vehicleId },
         { $set: req.body },
@@ -44,8 +43,9 @@ module.exports = {
         .status(500)
         .json({ message: "server error, unable to process request" });
     }
-  },
-  async deleteVehicle(req: Request, res: Response) {
+  }
+
+ export const deleteVehicle =  async (req: Request, res: Response) => {
     try {
       const { vehicleId } = req.params;
       const deletedVehicle = await vehicle.findOneAndRemove({ _id: vehicleId });
@@ -56,12 +56,12 @@ module.exports = {
         { $pull: { cars: vehicleId } },
         { new: true }
       )
-      if(!updateUser)return res.status(400).json{message: 'failed to delete vehicle from user'}
+      if(!updateUser)return res.status(400).json({message: 'failed to delete vehicle from user'})
     } catch (error) {
       console.error(error);
       res
         .status(500)
         .json({ message: "server error, unable to process request" });
     }
-  },
-};
+  }
+

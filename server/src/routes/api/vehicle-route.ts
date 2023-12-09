@@ -1,13 +1,12 @@
 import express from "express";
 import { authMiddleware } from "../../utils/auth";
-const {
+import {
     addVehicle
-} = require('../../controllers/vehicles')
+} from '../../controllers/vehicles'
 
 
 const router = express.Router()
 
 router.route('/').post(authMiddleware, addVehicle)
-
-module.exports = router
+export default router
 
