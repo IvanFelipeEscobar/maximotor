@@ -18,6 +18,8 @@ export class Vehicle {
 
   @prop()
   public mileage?: number;
+
+  @prop({type: () => [repair]})
 };
 
  export const vehicle = getModelForClass(Vehicle)

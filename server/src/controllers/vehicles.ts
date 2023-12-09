@@ -56,7 +56,7 @@ module.exports = {
         { $pull: { cars: vehicleId } },
         { new: true }
       )
-      if(!updateUser)return res.status(400).json{message: 'failed to delete vehicle from user'}
+      if(!updateUser)return res.status(400).json({message: 'failed to delete vehicle from user'})
     } catch (error) {
       console.error(error);
       res

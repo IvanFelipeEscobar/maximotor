@@ -1,5 +1,5 @@
 import { modelOptions, prop, getModelForClass } from "@typegoose/typegoose";
-import { Vehicle } from "./vehicles";
+
 @modelOptions({
   schemaOptions: {
     timestamps: true,
@@ -13,10 +13,11 @@ export class UserInfo {
   @prop({ required: true })
   public lName?: string;
 
-  public address?: string;
-
-  @prop({ type: () => [Vehicle] })
-  public cars?: Vehicle[];
+  public streetAddress?: string;
+  public streetAdress2?: string;
+  public city?: string;
+  public state?: string;
+  public zip?: string;
 }
 
 export const userInfo = getModelForClass(UserInfo);
