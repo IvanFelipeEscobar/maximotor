@@ -29,7 +29,7 @@ module.exports = {
   },
   async editVehicle(req: Request, res: Response) {
     try {
-      const { vehicleId } = req.params;
+      const { vehicleId } = req.params; 
       const updatedVeh = await vehicle.findOneAndUpdate(
         { _id: vehicleId },
         { $set: req.body },

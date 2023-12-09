@@ -34,6 +34,7 @@ export class User {
 
   @prop({ type: () => [Vehicle] })
   public cars?: Vehicle[];
+  
   // Method to verify the password
   async verifyPassword(
     this: DocumentType<User>,
