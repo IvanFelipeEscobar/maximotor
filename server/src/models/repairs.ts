@@ -1,12 +1,10 @@
 import { modelOptions, prop, getModelForClass } from "@typegoose/typegoose";
-import e from "express";
-
 @modelOptions({
   schemaOptions: {
     timestamps: true,
   }
 })
- export class Repair{
+ export class Repairs{
     @prop({required: true})
     public parts!: string[];
 
@@ -14,4 +12,4 @@ import e from "express";
     public repair!: string;
  }
 
- export const repair = getModelForClass(Repair)
+ export const repairs = getModelForClass(Repairs)
