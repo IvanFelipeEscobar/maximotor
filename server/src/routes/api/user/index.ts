@@ -16,3 +16,4 @@ router.route('/login').post(login)
 router.route(`/:userId`).get(getUser)
 
 export default router
+

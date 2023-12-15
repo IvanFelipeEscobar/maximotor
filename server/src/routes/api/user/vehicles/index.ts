@@ -16,3 +16,4 @@ router.route('/').post(authMiddleware, addVehicle)
 router.route('/:vehicleId').put(authMiddleware, editVehicle).delete(authMiddleware, deleteVehicle)
 export default router
 
+ 

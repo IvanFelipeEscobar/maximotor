@@ -20,7 +20,7 @@ import { Vehicle } from "./vehicles";
     this.password = await bcrypt.hash(this.password, saltRounds);
   }
 })
-// user obj has email/password for auth, and i separated user contact info && vehicle(s) 
+// user obj has email/password for auth, and i separated user contact info && vehicle(s)
 export class User {
   public _id?: string;
 
@@ -30,11 +30,12 @@ export class User {
   @prop({ required: true })
   public password!: string;
 
+  @prop({ type: () => UserInfo })
   public userInformation?: UserInfo;
 
   @prop({ type: () => [Vehicle] })
   public cars?: Vehicle[];
-  
+
   // Method to verify the password
   async verifyPassword(
     this: DocumentType<User>,

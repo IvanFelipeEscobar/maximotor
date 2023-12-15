@@ -7,7 +7,7 @@ import { Repairs } from "./repairs";
   })  
   
 export class Vehicle {
-
+ 
   @prop({ required: true })
   public year!: number;
 

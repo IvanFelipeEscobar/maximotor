@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import path from "path";
 import  {db} from "./config/connection";
-const router = require('./routes')
+import router from'./routes'
 import cors from 'cors'
 
 const app = express();
