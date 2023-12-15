@@ -20,6 +20,7 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { createUser } from "../utils/api-requests";
 import {Auth} from '../utils/auth'
 export default function Signup() {
+  const [formSubmit, setFormSubmit] = useState(false)
   const [showPassword, setShowPassword] = useState(false);
   const [userData, setUserData] = useState({
     email: ``,
@@ -33,6 +34,7 @@ export default function Signup() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setFormSubmit(true)
     if (!userData.email || !userData.password) {
       console.error("Email and password are required.");
       return;
@@ -69,7 +71,7 @@ export default function Signup() {
           p={8}
         >
           <Stack spacing={4}>
-            <FormControl id="email" isInvalid={userData.email === ""}>
+            <FormControl id="email" isInvalid={formSubmit && userData.email === ""}>
               <FormLabel>Email address</FormLabel>
               <Input
                 type="email"
@@ -80,7 +82,7 @@ export default function Signup() {
               <FormErrorMessage>Please enter a valid email</FormErrorMessage>
             </FormControl>
 
-            <FormControl id="password" isInvalid={userData.password === ""}>
+            <FormControl id="password" isInvalid={formSubmit && userData.password === ""}>
               <FormLabel>Password</FormLabel>
               <InputGroup>
                 <Input
