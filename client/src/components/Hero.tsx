@@ -42,7 +42,7 @@ export default function Hero() {
             </Text>
             <br />
             <Text as={'span'} color={'red.400'}>
-              made easy!
+                made easy!
             </Text>
           </Heading>
           <Text color={'gray.400'}>
