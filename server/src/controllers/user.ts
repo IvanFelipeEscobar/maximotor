@@ -4,8 +4,9 @@ import { signToken } from "../utils/auth";
 
 export const getUser = async (req: Request, res: Response) => {
   try {
+    const {userId} = req.params
     const activeUser = await user.findOne({
-      email: req.user.email,
+      _id: userId
     });
     return !activeUser
       ? res
