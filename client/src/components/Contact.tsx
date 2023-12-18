@@ -22,7 +22,6 @@ export default function Contact() {
       justify={"center"}
       id={"contact"}
       m={"2rem"}
-      gap={"1rem"}
       flexWrap={"wrap"}
     >
       <Stack
@@ -33,29 +32,25 @@ export default function Contact() {
         bg={useColorModeValue("white", "gray.700")}
         rounded={"xl"}
         boxShadow={"lg"}
-        p={3}
+        p={5}
         my={10}
       >
         <Heading lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
           Contact Us
         </Heading>
-        <Text>
-          Hours of operation
+        <Text as={'b'}>
+          Hours of Operation:
         </Text>
-      </Stack>
-      <Stack
-        spacing={4}
-        w={"full"}
-        maxW={"md"}
-        bg={useColorModeValue("white", "gray.700")}
-        rounded={"xl"}
-        boxShadow={"lg"}
-        p={3}
-      >
-        <Heading lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
-          Where to find us
-        </Heading>
-
+        <Text>
+          Monday - Friday : 8 a.m. - 5 p.m.
+        </Text>
+        <Text as={'b'}>Phone Number:</Text>
+        <Text> (770) 333 - 8280</Text>
+        <Text as={'b'}>Email:</Text>
+        <Text> Maximotor@bellsouth.net</Text>
+        <Text as={'b'}>Adress:</Text>
+        <Text> 2548 Austell Rd <br/>
+        Marietta, GA 30008</Text>
         <Map apiKey={apiKey!} shopLocation={position} />
       </Stack>
     </Flex>
