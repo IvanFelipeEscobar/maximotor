@@ -21,5 +21,3 @@ built by Ivan Felipe Escobar.
 [Vite](https://vitejs.dev/)
 
 [Chakra Ui](https://chakra-ui.com/) 
-
-[Chakra Ui Templates](https://chakra-templates.dev/)
