@@ -45,7 +45,7 @@ export default function Signup() {
       if (!response.ok)
         throw new Error("something went wrong in the sign up process");
       const newUser = await response.json();
-      Auth.login(newUser.token)
+      Auth.signup(newUser.token)
     } catch (error) {
       console.error(error);
     }
