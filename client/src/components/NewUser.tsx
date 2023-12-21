@@ -13,16 +13,45 @@ import {
   Heading,
   Text,
   useColorModeValue,
+  Select,
 } from '@chakra-ui/react'
+import { useEffect, useState } from 'react';
+
+interface State {
+  name: string;
+  code: string;
+}
 
 export default function NewUser() {
+  const [states, setStates] = useState<State[]>([]);
+  const [selectedState, setSelectedState] = useState('');
 
+  useEffect(() => {
+    const fetchStates = async () => {
+      try {
+        const response = await fetch('https://api.census.gov/data/2018/acs/acs5?get=NAME&for=state:*');
+        const data = await response.json();
+
+        const stateData : State[]= data.slice(1).map((stateInfo: string[]) => ({
+          name: stateInfo[0],
+          code: stateInfo[1],
+        }));
+        
+        stateData.sort((a, b) => a.name.localeCompare(b.name))
+        setStates(stateData);
+      } catch (error) {
+        console.error('Error fetching states:', error);
+      }
+    };
+
+    fetchStates();
+  }, []);
   return (
     <Flex
       minH={'100vh'}
       align={'center'}
       justify={'center'}>
-      <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6} my={10}>
+      <Stack spacing={8} mx={'auto'} maxW={'2xl'} py={12} px={6} my={10}>
         <Stack align={'center'}>
           <Heading lineHeight={1.1}
             fontWeight={600}
@@ -82,7 +111,17 @@ export default function NewUser() {
             <FormControl id="state">
               <FormLabel>State</FormLabel>
               <InputGroup>
-                <Input type={'text'}/>
+                {/* <Input type={'text'}/> */}
+                <Select placeholder='choose state...'
+                name="state"
+        value={selectedState}
+        onChange={(e) => setSelectedState(e.target.value)} >
+ {states.map((state) => (
+          <option key={state.code} value={state.code}>
+            {state.name}
+          </option>
+        ))}
+                </Select>
               </InputGroup>
             </FormControl>
             <FormControl id="zip">
