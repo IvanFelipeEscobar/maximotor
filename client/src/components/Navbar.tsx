@@ -20,13 +20,12 @@ import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
 import { Auth } from "../utils/auth";
 
 import { BsSun, BsMoonStarsFill } from 'react-icons/bs'
+
 const Links = [
   {a: "About us", b: "/#about"}, 
   {a:"Contact us", b:'#contact'}, 
   {a:"Services", b:'#services'}
 ]
-
-
 
 export default function Navbar() {
 
@@ -97,8 +96,7 @@ export default function Navbar() {
       </Button>
         </Flex>
         
-
-        {isOpen ? (
+        {isOpen && (
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
               {Links.map((link) => (
@@ -106,7 +104,7 @@ export default function Navbar() {
               ))}
             </Stack>
           </Box>
-        ) : null}
+        ) }
       </Box>
     </>
   );
