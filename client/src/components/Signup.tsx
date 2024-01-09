@@ -40,12 +40,11 @@ export default function Signup() {
       return;
     }
     try {
-      console.log(userData)
       const response = await createUser(userData);
       if (!response.ok)
         throw new Error("something went wrong in the sign up process");
       const newUser = await response.json();
-      Auth.signup(newUser.token)
+      Auth.login(newUser.token)
     } catch (error) {
       console.error(error);
     }
