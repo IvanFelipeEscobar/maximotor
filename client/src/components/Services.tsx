@@ -79,6 +79,7 @@ export default function Services() {
       width={"full"}
       overflow={"hidden"}
       id={'services'}
+      py={16}
     >
       {/* CSS files for react-slick */}
       <link

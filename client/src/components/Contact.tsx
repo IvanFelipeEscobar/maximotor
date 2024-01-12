@@ -8,6 +8,7 @@ import {
   Text
 } from "@chakra-ui/react";
 import Map from "./Map";
+import ContactButton from "./ContactButton";
 
 export default function Contact() {
   const position = {
@@ -34,6 +35,7 @@ export default function Contact() {
         boxShadow={"lg"}
         p={5}
         my={10}
+        align={'center'}
       >
         <Heading lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
           Contact Us
@@ -42,8 +44,9 @@ export default function Contact() {
           Hours of Operation:
         </Text>
         <Text>
-          Monday - Friday : 8 a.m. - 5 p.m.
+          Monday - Friday 
         </Text>
+        <Text marginTop={'-4'}>8 am - 5 pm</Text>
         <Text as={'b'}>Phone Number:</Text>
         <Text> (770) 333 - 8280</Text>
         <Text as={'b'}>Email:</Text>
@@ -52,6 +55,8 @@ export default function Contact() {
         <Text> 2548 Austell Rd <br/>
         Marietta, GA 30008</Text>
         <Map apiKey={apiKey!} shopLocation={position} />
+
+      <ContactButton/>
       </Stack>
     </Flex>
   );

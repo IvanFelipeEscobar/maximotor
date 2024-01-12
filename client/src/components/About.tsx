@@ -15,10 +15,10 @@ export default function About() {
       <Stack
         align={"center"}
         spacing={{ base: 8, md: 10 }}
-        py={{ base: 20, md: 28 }}
+        py={{ base: 4, md: 8 }}
         direction={{ base: "column", md: "row" }}
       >
-        <Stack flex={1} spacing={{ base: 5, md: 10 }} order={{ base: 2, md: 1 }}>
+        <Stack flex={1} spacing={{ base: 5, md: 10 }} order={{ base: 0, md: 1 }}>
           <Heading
             lineHeight={1.1}
             fontWeight={600}
@@ -48,11 +48,7 @@ export default function About() {
             potenti. Sed auctor laoreet libero, nec porttitor dolor vulputate
             ac.
           </Text>
-          <Stack
-          order={{ base: 1, md: 2 }}
-            spacing={{ base: 4, sm: 6 }}
-            direction={{ base: "column", sm: "row" }}
-          ></Stack>
+        
         </Stack>
         <Flex
           flex={1}
