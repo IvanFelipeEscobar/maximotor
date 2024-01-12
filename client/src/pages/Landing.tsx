@@ -9,8 +9,8 @@ export default function Landing() {
   return (
     <>
       <Hero />
-      <Services />
       <About />
+      <Services />
       <Contact />
     </>
   );

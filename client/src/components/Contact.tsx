@@ -8,6 +8,7 @@ import {
   Text
 } from "@chakra-ui/react";
 import Map from "./Map";
+import ContactButton from "./ContactButton";
 
 export default function Contact() {
   const position = {
@@ -54,6 +55,8 @@ export default function Contact() {
         <Text> 2548 Austell Rd <br/>
         Marietta, GA 30008</Text>
         <Map apiKey={apiKey!} shopLocation={position} />
+
+      <ContactButton/>
       </Stack>
     </Flex>
   );
