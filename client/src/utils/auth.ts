@@ -24,10 +24,10 @@ class AuthService {
     window.location.assign('/');
   };
 
-  signup = (token: string) => {
-    this.setToken(token);
-    window.location.assign('/new-user');
-  };
+  // signup = (token: string) => {
+  //   this.setToken(token);
+  //   window.location.assign('/new-user');
+  // };
 
   logout = () => {
     this.removeToken();
