@@ -1,8 +1,13 @@
+import { Box } from "@chakra-ui/react"
 
 const UserDashboard = () => {
     
   return (
-    <div>User-Dashboard</div>
+    <Box
+    height={'100vh'}
+    >
+
+    </Box>
   )
 }
 

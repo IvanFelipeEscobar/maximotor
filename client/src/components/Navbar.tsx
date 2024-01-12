@@ -34,7 +34,7 @@ export default function Navbar() {
 
   return (
     <>
-      <Box bg={useColorModeValue("gray.100", "gray.900")} px={4} pos={"fixed"} w={'full'} zIndex={99}>
+      <Box bg={useColorModeValue("gray.100", "gray.900")} px={3} pos={"fixed"} w={'full'} zIndex={99}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
             size={"md"}
@@ -86,14 +86,14 @@ export default function Navbar() {
                 <MenuItem><Link href={"/signup"}>Sign up</Link></MenuItem></>)}
               </MenuList>
             </Menu>
-          </Flex>
+          
           <Button
         aria-label="Toggle Color Mode"
         onClick={toggleColorMode}
         _focus={{ boxShadow: 'none' }}
         w="fit-content">
         {colorMode === 'light' ? <BsMoonStarsFill /> : <BsSun />}
-      </Button>
+      </Button></Flex>
         </Flex>
         
         {isOpen && (
