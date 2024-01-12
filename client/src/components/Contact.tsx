@@ -34,6 +34,7 @@ export default function Contact() {
         boxShadow={"lg"}
         p={5}
         my={10}
+        align={'center'}
       >
         <Heading lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
           Contact Us
@@ -42,8 +43,9 @@ export default function Contact() {
           Hours of Operation:
         </Text>
         <Text>
-          Monday - Friday : 8 a.m. - 5 p.m.
+          Monday - Friday 
         </Text>
+        <Text marginTop={'-4'}>8 am - 5 pm</Text>
         <Text as={'b'}>Phone Number:</Text>
         <Text> (770) 333 - 8280</Text>
         <Text as={'b'}>Email:</Text>
