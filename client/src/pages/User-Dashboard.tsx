@@ -1,4 +1,5 @@
 import { Box } from "@chakra-ui/react"
+import UserInfo from "../components/UserInfo"
 
 const UserDashboard = () => {
     
@@ -6,7 +7,7 @@ const UserDashboard = () => {
     <Box
     height={'100vh'}
     >
-
+<UserInfo/>
     </Box>
   )
 }
