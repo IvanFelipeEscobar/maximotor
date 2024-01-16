@@ -2,19 +2,18 @@ import { modelOptions, prop, getModelForClass } from "@typegoose/typegoose";
 
 @modelOptions({
   schemaOptions: {
-    timestamps: true,
+    timestamps: true, // last edited on...
   },
 })
 export class UserInfo {
   @prop({ required: true })
-  public phone?: string;
+  public phone!: string;
   @prop({ required: true })
-  public fName?: string;
+  public fName!: string;
   @prop({ required: true })
-  public lName?: string;
+  public lName!: string;
 
   public streetAddress?: string;
-  public streetAdress2?: string;
   public city?: string;
   public state?: string;
   public zip?: string;
