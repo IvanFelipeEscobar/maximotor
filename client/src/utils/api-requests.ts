@@ -21,3 +21,12 @@ export const signIn = async (userData: UserInput) => {
         body: JSON.stringify(userData)
     })
 }
+
+export const getUserInfo = async (token: string) => {
+return await fetch(`http://localhost:3001/api/users`, {
+    headers: {
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${token}`
+    }
+})
+}
