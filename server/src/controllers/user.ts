@@ -4,9 +4,8 @@ import { signToken } from "../utils/auth";
 
 export const getUser = async (req: Request, res: Response) => {
   try {
-    const {userId} = req.params
     const activeUser = await user.findOne({
-      _id: userId
+      _id: req.user._id
     });
     return !activeUser
       ? res
@@ -20,6 +19,7 @@ export const getUser = async (req: Request, res: Response) => {
       .json({ message: "server error, skill issue likely ;)" });
   }
 };
+
 export const createUser = async (req: Request, res: Response) => {
   console.log(req.body);
   try {

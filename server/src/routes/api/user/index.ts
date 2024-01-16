@@ -14,7 +14,7 @@ router.use('/user-info', userInfoRoute)
 // -------> /api/users...
 router.route(`/signup`).post(createUser)  
 router.route('/login').post(login)
-router.route(`/`).get(getUser, authMiddleware)
+router.route(`/`).get( authMiddleware, getUser)
 
 export default router
 

@@ -7,22 +7,24 @@ import { getUserInfo } from "../utils/api-requests";
 const UserDashboard = () => {
   const [userData, setUserData] = useState({});
   useEffect(() => {
-    // const fetchData =  async ( ) => {
+    const fetchData =  async ( ) => {
 const token = Auth.isLoggedIn() ? Auth.getToken() : null //token is saved in local storage when user signs in
 if(!token || Auth.isTokenExpired(token)) return Auth.logout //handling expired tokens
 try {
-  getUserInfo(token)
-
+  const res = await getUserInfo(token)
+  const data = await res.json()
+  setUserData(data)
 } catch (error) {
   console.error(error)
 }
 
-    // }
-    // fetchData()
+    }
+    fetchData()
   }, []);
+  console.log(userData)
   return (
     <Box height={"100vh"}>
-      <UserInfo userData={userData}/>
+      <UserInfo/>
     </Box>
   );
 };

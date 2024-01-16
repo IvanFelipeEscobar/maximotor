@@ -9,8 +9,7 @@ import {
   Badge,
   useColorModeValue,
 } from '@chakra-ui/react'
-const UserInfo = (userData: string) => {
-  console.log(userData)
+const UserInfo = () => {
   return (
     <Center py={{base: 20, md: 28}}>
       <Box
