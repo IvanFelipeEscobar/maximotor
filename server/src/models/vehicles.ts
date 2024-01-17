@@ -2,7 +2,7 @@ import { modelOptions, prop, getModelForClass } from "@typegoose/typegoose";
 import { Repairs } from "./repairs";
 @modelOptions({
     schemaOptions: {
-      timestamps: true,
+      timestamps: true, // vehicle added on...
     }
   })  
   
