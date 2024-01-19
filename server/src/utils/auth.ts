@@ -24,9 +24,7 @@ export const authMiddleware = (
   next: NextFunction
 ) => {
   let token = req.headers.authorization?.replace(/^Bearer\s/, '')
-  if (!token) {
-    return res.status(401).json({ message: "Unauthorized, please sign in" });
-  }
+  if (!token) return res.status(401).json({ message: "Unauthorized, please sign in" });
   try {
     const data = jwt.verify(token as string, secret);
     req.user = data as {
