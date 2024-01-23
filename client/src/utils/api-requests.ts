@@ -3,7 +3,7 @@ interface UserInput  {
     password: string
 }
 const apiUrl: string = process.env.NODE_ENV === 'production'
-  ? 'https://maximotor-server.vercel.app/'
+  ? 'https://maximotor-server.vercel.app'
   : 'http://localhost:3001';
 
 // Use `apiUrl` in your code
