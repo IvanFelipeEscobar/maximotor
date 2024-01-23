@@ -12,15 +12,13 @@ app.use(cors({
   credentials: true,
   origin: ['https://maximotor.vercel.app', 'http://localhost:5173']
 }))
-app.use(router);
-
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../../client/dist")));
 }
-app.get('*', (req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, "../../client/dist/index.html"))
-})
+
+app.use(router);
+
 db.once(`open`, () => {
   app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
 });
