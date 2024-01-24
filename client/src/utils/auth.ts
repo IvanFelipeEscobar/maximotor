@@ -21,7 +21,7 @@ class AuthService {
 
   login = (token: string) => {
     this.setToken(token);
-    window.location.assign('/');
+    window.location.assign('/user-dashboard');
   };
 
   // signup = (token: string) => {

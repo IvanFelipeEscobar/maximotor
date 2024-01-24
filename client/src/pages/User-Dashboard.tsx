@@ -21,7 +21,7 @@ try {
     }
     fetchData()
   }, []);
-  console.log(userData)
+  console.table(userData)
   return (
     <Box height={"100vh"}>
       <UserInfo/>
