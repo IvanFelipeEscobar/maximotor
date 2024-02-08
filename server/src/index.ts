@@ -5,7 +5,14 @@ import router from './routes';
 import cors from 'cors';
 
 const app: Express = express();
-const PORT: number | string = process.env.PORT || 3001;
+const PORT: number = process.env.PORT ? parseInt(process.env.PORT) : 3001;
+
+enum Env {
+  Development = 'development',
+  Production = 'production'
+}
+//variable to handle enviornment awareness
+const env = process.env.NODE_ENV === Env.Production ? Env.Production : Env.Development
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -13,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 // Define CORS options
 const corsOptions: cors.CorsOptions = {
   credentials: true,
-  origin: ['https://maximotor.vercel.app', 'http://localhost:5173']
+  origin: env === Env.Development ? ['http://localhost:5173'] : ['https://maximotor.vercel.app']
 };
 
 // Enable CORS middleware with options
