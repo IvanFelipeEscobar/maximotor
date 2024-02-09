@@ -31,5 +31,5 @@ Thumbs.db
 *.sln
 *.sw?
 
-# Enviornment
+# Environment
 .env

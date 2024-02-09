@@ -6,9 +6,9 @@ import {
   // Link,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { UserData } from "../pages/User-Dashboard";
+import { User } from "../utils/types";
 interface UDProps {
-  userDataProp: UserData
+  userDataProp: User
 }
 const UserInfo = ({userDataProp} : UDProps)  => {
   return (
