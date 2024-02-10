@@ -2,6 +2,16 @@ interface UserInput  {
     email: string
     password: string
 }
+interface UserInfoInput {
+    firstName: string,
+    lastName: string,
+    phone: string,
+    streetAddress?: string,
+    streetAddress2?: string,
+    city?: string,
+    state?: string,
+    zip?: string,
+}
 const apiUrl: string = process.env.NODE_ENV === 'production'
   ? 'https://maximotor-server.vercel.app'
   : 'http://localhost:3001';
@@ -37,4 +47,15 @@ return await fetch(`${apiUrl}/api/users`, {
         authorization: `Bearer ${token}`
     }
 })
+}
+
+export const addUserInfo = async (input: UserInfoInput, token: string) => {
+    return await fetch(`${apiUrl}/api/users/user-info/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(input)
+    })
 }

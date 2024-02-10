@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import {
   Flex,
@@ -14,8 +14,11 @@ import {
   Text,
   useColorModeValue,
   Select,
-} from '@chakra-ui/react'
-import { useEffect, useState } from 'react';
+} from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { Auth } from "../utils/auth";
+import { addUserInfo } from "../utils/api-requests";
+import { CheckIcon } from "@chakra-ui/icons";
 
 interface State {
   name: string;
@@ -24,129 +27,208 @@ interface State {
 
 export default function NewUser() {
   const [states, setStates] = useState<State[]>([]);
-  const [selectedState, setSelectedState] = useState('');
-
+  const [selectedState, setSelectedState] = useState("");
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    phone: "",
+    streetAddress: "",
+    streetAddress2: "",
+    city: "",
+    state: "",
+    zip: "",
+  });
+const submitForm = async (e: React.FormEvent) => {
+e.preventDefault()
+const token = Auth.isLoggedIn() ? Auth.getToken() : null//token is saved in local storage when user signs in
+if(!token || Auth.isTokenExpired(token)) {
+  Auth.logout()
+  return
+} //handling expired tokens
+try {
+  const res = await addUserInfo(formData, token)
+  if (res.ok) window.location.assign('/user-dashboard')
+} catch (error) {
+  console.error('Error submitting form data:', error);
+}
+}
   useEffect(() => {
     const fetchStates = async () => {
       try {
-        const response = await fetch('https://api.census.gov/data/2018/acs/acs5?get=NAME&for=state:*');
+        const response = await fetch(
+          "https://api.census.gov/data/2018/acs/acs5?get=NAME&for=state:*"
+        );
         const data = await response.json();
 
-        const stateData : State[]= data.slice(1).map((stateInfo: string[]) => ({
+        const stateData: State[] = data.slice(1).map((stateInfo: string[]) => ({
           name: stateInfo[0],
           code: stateInfo[1],
         }));
-        
-        stateData.sort((a, b) => a.name.localeCompare(b.name))
+
+        stateData.sort((a, b) => a.name.localeCompare(b.name));
         setStates(stateData);
       } catch (error) {
-        console.error('Error fetching states:', error);
+        console.error("Error fetching states:", error);
       }
     };
 
     fetchStates();
   }, []);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+    console.table(formData)
+  };
+  
   return (
-    <Flex
-      minH={'100vh'}
-      align={'center'}
-      justify={'center'}>
-      <Stack spacing={8} mx={'auto'} maxW={'2xl'} py={12} px={6} my={10}>
-        <Stack align={'center'}>
-          <Heading lineHeight={1.1}
+    <Flex minH={"100vh"} align={"center"} justify={"center"}>
+      <Stack spacing={8} mx={"auto"} maxW={"2xl"} py={12} px={6} my={10}>
+        <Stack align={"center"}>
+          <Heading
+            lineHeight={1.1}
             fontWeight={600}
-            fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }}
-           >
-            <Text as={'span'}  color={'aliceblue'}>Welcome to our online family! </Text>
-            </Heading>
-          <Text as={'span'} color={'red.400'} fontSize={'xl'} fontWeight={600}>
+            fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}
+          >
+            <Text as={"span"} color={"aliceblue"}>
+              Welcome to our online family{" "}
+            </Text>
+          </Heading>
+          <Text
+            as={"span"}
+            color={"red.400"}
+            fontSize={"xl"}
+            fontWeight={600}
+            align={"center"}
+          >
             to beter serve you, please provide some basic contact information ✌️
           </Text>
         </Stack>
         <Box
-          rounded={'lg'}
-          bg={useColorModeValue('white', 'gray.700')}
-          boxShadow={'lg'}
-          p={8}>
-          <Stack spacing={4}>
-            <HStack>
-              <Box>
-                <FormControl id="firstName" isRequired>
-                  <FormLabel>First Name</FormLabel>
-                  <Input type="text" />
+          rounded={"lg"}
+          bg={useColorModeValue("white", "gray.700")}
+          boxShadow={"lg"}
+          p={8}
+        >
+          <form onSubmit={submitForm}>
+            <Stack spacing={4}>
+              <HStack>
+                <Box>
+                  <FormControl isRequired>
+                    <FormLabel>First Name</FormLabel>
+                    <Input
+                      type="text"
+                      id="firstName"
+                      value={formData.firstName}
+                      onChange={handleChange}
+                    />
+                  </FormControl>
+                </Box>
+                <Box>
+                  <FormControl isRequired>
+                    <FormLabel>Last Name</FormLabel>
+                    <Input
+                      type="text"
+                      id="lastName"
+                      value={formData.lastName}
+                      onChange={handleChange}
+                    />
+                  </FormControl>
+                </Box>
+              </HStack>
+              <FormControl isRequired>
+                <FormLabel>Phone number</FormLabel>
+                <InputGroup>
+                  <Input
+                    type={"text"}
+                    id="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                  />
+                </InputGroup>
+              </FormControl>
+              <FormControl id="adress-1">
+                <FormLabel>Street Address</FormLabel>
+                <InputGroup>
+                  <Input
+                    type={"text"}
+                    id="streetAddress"
+                    value={formData.streetAddress}
+                    onChange={handleChange}
+                  />
+                </InputGroup>
+              </FormControl>
+              <FormControl>
+                <FormLabel>Street Adress 2</FormLabel>
+                <InputGroup>
+                  <Input
+                    type={"text"}
+                    id="streetAddress2"
+                    value={formData.streetAddress2}
+                    onChange={handleChange}
+                  />
+                </InputGroup>
+              </FormControl>
+              <HStack>
+                <FormControl>
+                  <FormLabel>City</FormLabel>
+                  <InputGroup>
+                    <Input type={"text"} id="city" value={formData.city} onChange={handleChange} />
+                  </InputGroup>
                 </FormControl>
-              </Box>
-              <Box>
-                <FormControl id="lastName" isRequired>
-                  <FormLabel>Last Name</FormLabel>
-                  <Input type="text" />
+                <FormControl>
+                  <FormLabel>State</FormLabel>
+                  <InputGroup>
+                    <Select
+                      placeholder="choose state..."
+                      id="state"
+                      value={selectedState}
+                      onChange={(e) => {
+                        setSelectedState(e.target.value);
+                        setFormData({
+                          ...formData,
+                          state: e.target.value
+                        })
+                      }}
+                    >
+                      {states.map((state) => (
+                        <option key={state.code} value={state.name}>
+                          {state.name}
+                        </option>
+                      ))}
+                    </Select>
+                  </InputGroup>
                 </FormControl>
-              </Box>
-            </HStack>
-            <FormControl id="phone" isRequired>
-              <FormLabel>Phone number</FormLabel>
-              <InputGroup>
-                <Input type={'text'}/>
-              </InputGroup>
-            </FormControl>
-            <FormControl id="adress-1">
-              <FormLabel>Street Address</FormLabel>
-              <InputGroup>
-                <Input type={'text'}/>
-              </InputGroup>
-            </FormControl>
-            <FormControl id="phone">
-              <FormLabel>Street Adress 2</FormLabel>
-              <InputGroup>
-                <Input type={'text'}/>
-              </InputGroup>
-            </FormControl>
-            <HStack>
-            <FormControl id="city">
-              <FormLabel>City</FormLabel>
-              <InputGroup>
-                <Input type={'text'}/>
-              </InputGroup>
-            </FormControl>
-            <FormControl id="state">
-              <FormLabel>State</FormLabel>
-              <InputGroup>
-                {/* <Input type={'text'}/> */}
-                <Select placeholder='choose state...'
-                name="state"
-        value={selectedState}
-        onChange={(e) => setSelectedState(e.target.value)} >
- {states.map((state) => (
-          <option key={state.code} value={state.code}>
-            {state.name}
-          </option>
-        ))}
-                </Select>
-              </InputGroup>
-            </FormControl>
-            <FormControl id="zip">
-              <FormLabel>Zip Code</FormLabel>
-              <InputGroup>
-                <Input type={'text'}/>
-              </InputGroup>
-            </FormControl>
-            </HStack>
-            <Stack spacing={10} pt={2}>
-              <Button
-                loadingText="Submitting"
-                size="lg"
-                bg={'blue.400'}
-                color={'white'}
-                _hover={{
-                  bg: 'blue.500',
-                }}>
-                Sign up
-              </Button>
+                <FormControl>
+                  <FormLabel>Zip Code</FormLabel>
+                  <InputGroup>
+                    <Input type={"text"} id="zip" value={formData.zip} onChange={handleChange} />
+                  </InputGroup>
+                </FormControl>
+              </HStack>
+              <Stack spacing={10} pt={2}>
+                <Button
+                  type="submit"
+                  loadingText="Submitting"
+                  size="lg"
+                  bg={"blue.400"}
+                  color={"white"}
+                  _hover={{
+                    bg: "blue.500",
+                  }}
+                  leftIcon={<CheckIcon/>}
+                >
+                  Submit
+                </Button>
+              </Stack>
             </Stack>
-            
-          </Stack>
+          </form>
         </Box>
       </Stack>
     </Flex>
-  )
+  );
 }
