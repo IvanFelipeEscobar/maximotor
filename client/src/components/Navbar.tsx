@@ -99,12 +99,12 @@ export default function Navbar() {
                   </MenuItem>
                 ) : (
                   <>
-                    <MenuItem>
-                      <Link href={"/login"}>Login</Link>
-                    </MenuItem>
-                    <MenuItem>
-                      <Link href={"/signup"}>Sign up</Link>
-                    </MenuItem>
+                    <Link href={"/login"}><MenuItem>
+                      Login
+                    </MenuItem></Link>
+                    <Link href={"/signup"}><MenuItem>
+                     Sign up
+                    </MenuItem></Link>
                   </>
                 )}
               </MenuList>

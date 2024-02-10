@@ -5,12 +5,15 @@ import {
   Text,
   // Link,
   useColorModeValue,
+  Button,
 } from "@chakra-ui/react";
 import { User } from "../utils/types";
+import { PlusSquareIcon } from "@chakra-ui/icons";
 interface UDProps {
   userDataProp: User
 }
 const UserInfo = ({userDataProp} : UDProps)  => {
+  console.table(userDataProp.userInformation)
   return (
     <Center py={{ base: 20, md: 28 }}>
       <Box
@@ -32,15 +35,25 @@ const UserInfo = ({userDataProp} : UDProps)  => {
           textAlign={"center"}
           color={useColorModeValue("gray.700", "gray.400")}
           px={3}
-        >800 555 1234
+        >{userDataProp.userInformation?.phone}
         </Text>
         <Text
           textAlign={"center"}
           color={useColorModeValue("gray.700", "gray.400")}
           px={3}
         >
-          1234 street name, city, STATE 30303
+          {userDataProp.userInformation?.streetAddress}
         </Text>
+        <Button
+        variant={'solid'}
+        colorScheme={'red'}
+        bg={'red.400'}
+        _hover={{bg:'red.500'}}
+        size={'md'}
+        mt={4}
+
+        leftIcon={<PlusSquareIcon />}
+        >add vehicle</Button>
       </Box>
     </Center>
   );

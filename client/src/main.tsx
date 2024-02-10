@@ -19,8 +19,6 @@ const router = createBrowserRouter([
       {path: '/login', element: <Login/>},
       {path: '/appointments', element: <Services/>}, //todo: make appointments page
       {path: '/user-dashboard', element: <UserDashboard/>},//to do: user dash
-      // {path: '/new-user', element: <NewUser/>}
-
     ]
   }
 ])
