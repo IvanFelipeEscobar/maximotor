@@ -50,7 +50,7 @@ return await fetch(`${apiUrl}/api/users`, {
 }
 
 export const addUserInfo = async (input: UserInfoInput, token: string) => {
-    return await fetch(`${apiUrl}/api/users/user-info/`, {
+    return await fetch(`${apiUrl}/api/users/user-info`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

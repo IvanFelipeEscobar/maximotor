@@ -1,4 +1,4 @@
-import { user } from "../models/user";
+import { User, user } from "../models/user";
 import { Request, Response } from "express";
 import { signToken } from "../utils/auth";
 
@@ -21,7 +21,10 @@ export const getUser = async (req: Request, res: Response) => {
 };
 
 export const createUser = async (req: Request, res: Response) => {
-  console.log(req.body);
+  const existingUser = await user.findOne({email: req.body.email})
+  if(existingUser) {
+    return res.status(400).json({message: 'email is already in use'})
+  }
   try {
     const newUser = await user.create(req.body);
     if (!newUser)
@@ -49,15 +52,15 @@ export const login = async (req: Request, res: Response) => {
     const loggedUser = await user.findOne({ email: req.body.email });
     if (!loggedUser)
       return res
-        .json(400)
+        .status(400)
         .json({
-          message: `something went wrong!!! user not found, review input data`,
+          message: `sorry, user not found`,
         });
     const pWord = await loggedUser.verifyPassword(req.body.password);
     if (!pWord)
       return res
         .status(400)
-        .json({ message: "failed to authneticate user, Wrong password!" });
+        .json({ message: "incorrect password!" });
 
     res.status(200).json({
       _id: loggedUser._id,

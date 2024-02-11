@@ -10,8 +10,6 @@ import {
   HStack,
   Stack,
   Button,
-  Heading,
-  Text,
   useColorModeValue,
   Select,
 } from "@chakra-ui/react";
@@ -87,27 +85,8 @@ try {
   
   return (
     <Flex minH={"100vh"} align={"center"} justify={"center"}>
-      <Stack spacing={8} mx={"auto"} maxW={"2xl"} py={12} px={6} my={10}>
-        <Stack align={"center"}>
-          <Heading
-            lineHeight={1.1}
-            fontWeight={600}
-            fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}
-          >
-            <Text as={"span"} color={"aliceblue"}>
-              Welcome to our online family{" "}
-            </Text>
-          </Heading>
-          <Text
-            as={"span"}
-            color={"red.400"}
-            fontSize={"xl"}
-            fontWeight={600}
-            align={"center"}
-          >
-            to beter serve you, please provide some basic contact information ✌️
-          </Text>
-        </Stack>
+      <Stack  mx={"auto"} maxW={"2xl"}  px={6} >
+       
         <Box
           rounded={"lg"}
           bg={useColorModeValue("white", "gray.700")}
@@ -115,7 +94,7 @@ try {
           p={8}
         >
           <form onSubmit={submitForm}>
-            <Stack spacing={4}>
+            <Stack spacing={4} color={'black'}>
               <HStack>
                 <Box>
                   <FormControl isRequired>

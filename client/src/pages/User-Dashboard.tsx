@@ -13,11 +13,10 @@ const UserDashboard = () => {
   return (
     <Container maxW={'7xl'}>
       <Stack
-        align={'center'}
+        align={['center']}
         spacing={{ base: 8, md: 10 }}
-        py={{ base: 16, md: 20 }}
-        direction={{ base: 'column', md: 'row' }}>
-        <Stack flex={1} spacing={{ base: 5, md: 10 }} marginTop={{base:8, md: 16}} align={'center'}>
+        py={{ base: 16, md: 20 }}>
+        <Stack flex={1} spacing={{ base: 5, md: 10 }} marginTop={{base:8, md: 16}} align={['center']}>
           <Heading
             lineHeight={1.1}
             fontWeight={600}

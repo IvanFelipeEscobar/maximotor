@@ -56,10 +56,6 @@ export default function UserAccordion() {
               <ChevronDownIcon fontSize="24px" />
             </AccordionButton>
             <AccordionPanel pb={4}>
-              {/* <Text color="gray.400">
-                Chakra UI is a simple and modular component library that gives developers
-                the building blocks they need to create web applications.
-              </Text> */}
       {userData && <UserInfo userData={userData}/>}
             </AccordionPanel>
           </AccordionItem>

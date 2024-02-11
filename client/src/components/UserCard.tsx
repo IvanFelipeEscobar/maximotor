@@ -3,14 +3,11 @@ import {
   Heading,
   Text,
   useColorModeValue,
-  Button,
 } from "@chakra-ui/react";
-import { PlusSquareIcon } from "@chakra-ui/icons";
 import { UDProps } from "./UserInfo";
 
 const UserCard = ({ userData }: UDProps) => {
   return (
-    <div>
       <Box
         maxW={"320px"}
         w={"full"}
@@ -20,7 +17,7 @@ const UserCard = ({ userData }: UDProps) => {
         p={6}
         textAlign={"center"}
       >
-        <Heading fontSize={"2xl"} fontFamily={"body"}>
+        <Heading fontSize={"2xl"} color={'gray.800'} fontFamily={"body"}>
           {userData.userInformation?.firstName +
             " " +
             userData.userInformation?.lastName}
@@ -35,19 +32,7 @@ const UserCard = ({ userData }: UDProps) => {
         >
           {userData.userInformation?.phone}
         </Text>
-        <Button
-          variant={"solid"}
-          colorScheme={"red"}
-          bg={"red.400"}
-          _hover={{ bg: "red.500" }}
-          size={"md"}
-          mt={4}
-          leftIcon={<PlusSquareIcon />}
-        >
-          add vehicle
-        </Button>
       </Box>
-    </div>
   );
 };
 

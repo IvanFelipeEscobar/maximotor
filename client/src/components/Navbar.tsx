@@ -4,11 +4,8 @@ import {
   Box,
   Flex,
   HStack,
-  // IconButton,
   Button,
-  // useDisclosure,
   useColorModeValue,
-  // Stack,
   Link,
   Menu,
   MenuButton,
@@ -40,12 +37,13 @@ export default function Navbar() {
     <>
       <Box
         bg={useColorModeValue("gray.100", "gray.900")}
-        px={3}
+        py={[3, 1]}
+        px={[2, 5]}
         pos={"fixed"}
         w={"full"}
         zIndex={99}
       >
-        <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+        <Flex h={16} alignItems={"center"} justifyContent={"space-between"} flexWrap={'wrap'}>
           {/* <IconButton
             size={"md"}
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -53,9 +51,22 @@ export default function Navbar() {
             display={{ md: "none" }}
             onClick={isOpen ? onClose : onOpen}
           /> */}
-          <HStack spacing={8} alignItems={"center"} >
+          <HStack spacing={8} alignItems={"center"}>
             <Box>
-              <Link href={"/"}><Text as={'b'} fontSize={'2xl'} letterSpacing={4}>Maximotor</Text></Link>
+              <Link href={"/"}>
+                <Text
+                  as={"b"}
+                  fontSize={{ base: "xl", md: "2xl" }}
+                  letterSpacing={[2, 7]}
+                  fontWeight={'extrabold'}
+                  color={'red.500'}
+                  bg={useColorModeValue('rgb(41, 63, 137)', 'rgba(71,90,127,0.6)')}
+                  p={2}
+                  rounded={'lg'}
+                  shadow={'md'}>
+                  Maximotor
+                </Text>
+              </Link>
             </Box>
             <HStack
               as={"nav"}
@@ -99,12 +110,12 @@ export default function Navbar() {
                   </MenuItem>
                 ) : (
                   <>
-                    <Link href={"/login"}><MenuItem>
-                      Login
-                    </MenuItem></Link>
-                    <Link href={"/signup"}><MenuItem>
-                     Sign up
-                    </MenuItem></Link>
+                    <Link href={"/login"}>
+                      <MenuItem>Login</MenuItem>
+                    </Link>
+                    <Link href={"/signup"}>
+                      <MenuItem>Sign up</MenuItem>
+                    </Link>
                   </>
                 )}
               </MenuList>

@@ -8,10 +8,12 @@ class AuthService {
   removeToken = () => localStorage.removeItem('id_token');
 
   isTokenExpired = (token: string) => {
-    if (!token) return true;
     const decoded = decode(token);
     const currentTime = Date.now() / 1000;
-    return decoded.exp! < currentTime;
+    if (!token || decoded.exp! < currentTime || token === undefined) {
+      this.removeToken();
+      return true
+    } else return false
   };
 
   isLoggedIn = () => {
