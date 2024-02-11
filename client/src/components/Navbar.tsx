@@ -53,9 +53,9 @@ export default function Navbar() {
             display={{ md: "none" }}
             onClick={isOpen ? onClose : onOpen}
           /> */}
-          <HStack spacing={8} alignItems={"center"}>
+          <HStack spacing={8} alignItems={"center"} >
             <Box>
-              <Link href={"/"}><Text>Maximotor</Text></Link>
+              <Link href={"/"}><Text as={'b'} fontSize={'2xl'} letterSpacing={4}>Maximotor</Text></Link>
             </Box>
             <HStack
               as={"nav"}

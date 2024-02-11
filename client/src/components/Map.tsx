@@ -1,4 +1,3 @@
-import React from 'react';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 interface MapComponentProps {
     apiKey: string;
