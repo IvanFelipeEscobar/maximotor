@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import {
   Box,
   Heading,
@@ -18,7 +18,11 @@ export default function About() {
         py={{ base: 4, md: 8 }}
         direction={{ base: "column", md: "row" }}
       >
-        <Stack flex={1} spacing={{ base: 5, md: 10 }} order={{ base: 0, md: 1 }}>
+        <Stack
+          flex={1}
+          spacing={{ base: 5, md: 10 }}
+          order={{ base: 0, md: 1 }}
+        >
           <Heading
             lineHeight={1.1}
             fontWeight={600}
@@ -43,12 +47,17 @@ export default function About() {
             </Text>
           </Heading>
           <Text color={"gray.400"} fontSize={"lg"}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget
-            justo nec urna feugiat vehicula. Aliquam erat volutpat. Suspendisse
-            potenti. Sed auctor laoreet libero, nec porttitor dolor vulputate
-            ac.
+            Welcome to our family-operated automotive repair shop, where
+            community is at the heart of everything we do. With a passion for
+            cars and a commitment to excellence, we provide reliable and
+            trustworthy service to keep your vehicle running smoothly. Whether
+            it's routine maintenance or complex repairs, our experienced team is
+            dedicated to delivering top-notch service with a personal touch. At
+            our shop, you're not just a customer – you're part of our automotive
+            family. Join us today and experience the difference of a
+            community-oriented repair shop where your satisfaction is our
+            priority.
           </Text>
-        
         </Stack>
         <Flex
           flex={1}
@@ -64,7 +73,7 @@ export default function About() {
             boxShadow={"2xl"}
             width={"full"}
             overflow={"hidden"}
-
+            display={['none', null, 'inherit']}
           >
             <Image
               alt={"serpentine belt"}

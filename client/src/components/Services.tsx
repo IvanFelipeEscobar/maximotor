@@ -14,42 +14,41 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 
 const serviceArr = [
   {
-    service: "Brakes",
-    description: `Full service brake job includes: Ceramic pads, clean and grease all contact and slice points to promote durability, and rotors are re-surfaced (when possible)`,
+    service: "Brake Service",
+    description: `Our comprehensive brake service includes installation of high-quality ceramic pads, cleaning and greasing of all contact points, and resurfacing of rotors for enhanced durability.`,
     img: "/un-liu-yqsgL2wKEHA-unsplash.jpg",
-    price: '$180 (Some applications may be more)'
+    price: '$180 (Price may vary for certain vehicle models)'
   },
   {
     service: "Oil Change",
-    description: `Oil drain and filled, filter replacement, tire pressure checked, all fluids checked and topped off and basic safety inspection`,
+    description: `Ensure your vehicle's optimal performance with our oil change service, which includes draining and refilling oil, replacing filters, checking tire pressure, topping off fluids, and conducting a basic safety inspection.`,
     img: "/markus-spiske-tx-9wlZaXq4-unsplash.jpg",
-    price: 'Regular - $30, Synthetic - $75 up to 5 qts, cartridge filter applications may be more '
+    price: 'Regular - $30, Synthetic - $75 for up to 5 qts (Additional charges may apply for cartridge filter applications)'
   },
   {
-    service: "Timing Belt",
-    description: `Timing belt replacement includes all pulleys and tensioner, as well as water pump when applicable`,
+    service: "Timing Belt Replacement",
+    description: `Get peace of mind with our timing belt replacement service, which includes installation of a new belt, pulleys, tensioner, and water pump when necessary.`,
     img: "/parvez-azarqaderi-YM5HPbFvXIU-unsplash.jpg",
-    price: 'Prices vary, contact us to get an estimate'
+    price: 'Contact us for a personalized estimate based on your vehicle'
   },
   {
-    service: "Suspension",
-    description: "Comprehensive suspension system inspection and repair, including shocks, struts, springs, sway bar links, ball joints, trailing arms and control arms.",
+    service: "Suspension Repair",
+    description: "Enhance your vehicle's ride quality and safety with our suspension repair service, covering shocks, struts, springs, sway bar links, ball joints, and control arms.",
     img: "/joshua-vialdores-yXdAs7284sY-unsplash.jpg",
-    price: "Price varies depending on the specific suspension components and repairs needed."
+    price: "Price varies depending on the specific components and repairs needed."
   }, 
   {
     service: "Tune-Up",
-    description: "Complete engine tune-up, including spark plug replacement, air filter replacement, and fuel system cleaning.",
+    description: "Maximize engine performance and fuel efficiency with our comprehensive tune-up service, including spark plug replacement, air filter replacement, and fuel system cleaning.",
     img: "/julian-hochgesang-zRDcbSvY0xo-unsplash.jpg",
-    price: "Price may vary based on vehicle make and model"
+    price: "Price may vary based on your vehicle's make and model"
   },
   {
-    service: "Alignments",
-    description: "Wheel alignment service to ensure proper tire wear and vehicle handling.",
+    service: "Wheel Alignment",
+    description: "Ensure even tire wear and precise vehicle handling with our wheel alignment service, covering four-wheel toe-in adjustment (additional charges may apply for camber adjustment).",
     img: "/robert-laursoo-WHPOFFzY9gU-unsplash.jpg",
-    price: "$85 (Four-wheel toe-in only, camber adjustment may be extra)"
+    price: "$85 (Price for four-wheel toe-in only)"
   }
-
 ];
 const settings = {
   dots: true,

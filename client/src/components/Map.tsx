@@ -1,16 +1,16 @@
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 interface MapComponentProps {
-    apiKey: string;
-    shopLocation: {
-      latitude: number;
-      longitude: number;
-    };
-  }
-  
+  apiKey: string;
+  shopLocation: {
+    latitude: number;
+    longitude: number;
+  };
+}
+
 const Map: React.FC<MapComponentProps> = ({ apiKey, shopLocation }) => {
   const mapContainerStyle = {
-    width: '100%',
-    height: '400px',
+    width: "100%",
+    height: "400px",
   };
 
   const center = {
@@ -20,7 +20,13 @@ const Map: React.FC<MapComponentProps> = ({ apiKey, shopLocation }) => {
 
   return (
     <LoadScript googleMapsApiKey={apiKey}>
-      <GoogleMap mapContainerStyle={mapContainerStyle} center={center} zoom={17}/>
+      <GoogleMap
+        mapContainerStyle={mapContainerStyle}
+        center={center}
+        zoom={17}
+      >
+        {shopLocation && <Marker position={center} />}
+      </GoogleMap>
     </LoadScript>
   );
 };
