@@ -50,8 +50,8 @@ export default function Login() {
     }
   }
   return (
-    <Flex minH={"100vh"} align={"center"} justify={"center"}>
-      <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+    <Flex minH={"100vh"} align={"center"} justify={"center"} >
+      <Stack spacing={8} mx={"auto"} maxW={"lg"} mt={8} py={12} px={6}>
         <Stack align={"center"}>
           <Heading fontSize={"4xl"} color={"aliceblue"}>
             Sign in to your account

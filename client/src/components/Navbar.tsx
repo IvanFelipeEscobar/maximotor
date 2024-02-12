@@ -14,11 +14,7 @@ import {
   useColorMode,
   Text,
 } from "@chakra-ui/react";
-import {
-  //  HamburgerIcon,
-  // CloseIcon,
-  AddIcon,
-} from "@chakra-ui/icons";
+import { HiOutlineUserCircle } from "react-icons/hi2";
 import { Auth } from "../utils/auth";
 
 import { BsSun, BsMoonStarsFill } from "react-icons/bs";
@@ -37,13 +33,14 @@ export default function Navbar() {
     <>
       <Box
         bg={useColorModeValue("gray.100", "gray.900")}
-        py={[3, 1]}
+        py={[8, 1]}
         px={[2, 5]}
         pos={"fixed"}
         w={"full"}
         zIndex={99}
+        boxSizing={'border-box'}
       >
-        <Flex h={16} alignItems={"center"} justifyContent={"space-between"} flexWrap={'wrap'}>
+        <Flex h={16} alignItems={"center"} flexWrap={'wrap'} justifyContent={["center", "space-between"]} gap={[4]} >
           {/* <IconButton
             size={"md"}
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -51,7 +48,7 @@ export default function Navbar() {
             display={{ md: "none" }}
             onClick={isOpen ? onClose : onOpen}
           /> */}
-          <HStack spacing={8} alignItems={"center"}>
+          <HStack alignItems={"center"}>
             <Box>
               <Link href={"/"}>
                 <Text
@@ -68,12 +65,12 @@ export default function Navbar() {
                 </Text>
               </Link>
             </Box>
-            <HStack
+            {/* <HStack
               as={"nav"}
               spacing={4}
-              display={{ base: "none", md: "flex" }}
+              display={{ base: "flex", md: "flex" }}
             >
-              {/* {Links.map((link) => (
+              {Links.map((link) => (
                   <Link   as="a"
                   px={2}
                   py={1}
@@ -86,8 +83,8 @@ export default function Navbar() {
                       // "gray.700"),
                   }}key={link.a} href={link.b}>{link.a}</Link>
                   // </NavLink>
-              ))} */}
-            </HStack>
+              ))}
+            </HStack> */}
           </HStack>
           <Flex alignItems={"center"}>
             <Menu>
@@ -99,10 +96,21 @@ export default function Navbar() {
                 _hover={{ bg: "red.500" }}
                 size={"sm"}
                 mr={4}
-                leftIcon={<AddIcon />}
+                leftIcon={<HiOutlineUserCircle />}
+                visibility={['hidden', 'inherit']}
               >
                 {Auth.isLoggedIn() ? "Log out" : "Sign up / Login"}
               </MenuButton>
+              <MenuButton
+                as={Button}
+                variant={"solid"}
+                colorScheme={"red"}
+                bg={"red.400"}
+                _hover={{ bg: "red.500" }}
+                size={"sm"}
+                mr={[4, 0]}
+                visibility={['inherit','hidden']}
+              ><HiOutlineUserCircle /></MenuButton>
               <MenuList>
                 {Auth.isLoggedIn() ? (
                   <MenuItem>

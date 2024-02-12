@@ -7,6 +7,7 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import { FaCalendarDays } from "react-icons/fa6";
 import UserAccordion from "../components/UserAccordion";
 const UserDashboard = () => {
  
@@ -49,7 +50,8 @@ const UserDashboard = () => {
               px={6}
               colorScheme={'red'}
               bg={'red.400'}
-              _hover={{ bg: 'red.500' }}>
+              _hover={{ bg: 'red.500' }}
+              leftIcon={<FaCalendarDays/>}>
               Schedule an Appointment 
             </Button>
           </Stack>

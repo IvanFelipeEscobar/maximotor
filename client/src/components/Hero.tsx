@@ -10,6 +10,7 @@ import {
   Button,
   Image
 } from '@chakra-ui/react'
+import { FaCalendarDays } from "react-icons/fa6";
 
 export default function Hero() {
   return (
@@ -17,7 +18,7 @@ export default function Hero() {
       <Stack
         align={'center'}
         spacing={{ base: 8, md: 10 }}
-        py={{ base: 16, md: 20 }}
+        py={{ base: 28, md: 20 }}
         direction={{ base: 'column', md: 'row' }}>
         <Stack flex={1} spacing={{ base: 5, md: 10 }} marginTop={{base:8, md: 16}}>
           <Heading
@@ -56,7 +57,8 @@ export default function Hero() {
               px={6}
               colorScheme={'red'}
               bg={'red.400'}
-              _hover={{ bg: 'red.500' }}>
+              _hover={{ bg: 'red.500' }}
+              leftIcon={<FaCalendarDays/>}>
               Schedule an Appointment 
             </Button>
           </Stack>
