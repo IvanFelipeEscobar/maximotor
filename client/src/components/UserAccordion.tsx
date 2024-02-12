@@ -18,6 +18,7 @@ import { useEffect, useState } from "react";
 import { Auth } from "../utils/auth";
 import { getUserInfo } from "../utils/api-requests";
 import { User } from "../utils/types";
+import VehicleCard from './VehicleCard';
 
 export default function UserAccordion() {
     const [userData, setUserData] = useState<User | null>(null);
@@ -70,11 +71,7 @@ export default function UserAccordion() {
               <ChevronDownIcon fontSize="24px" />
             </AccordionButton>
             <AccordionPanel pb={4}>
-              <Text color="gray.400">
-                Chakra UI offers a variety of advantages including ease of use,
-                accessibility, and customization options. It also provides a comprehensive
-                set of UI components and is fully compatible with React.
-              </Text>
+              <VehicleCard/>
             </AccordionPanel>
           </AccordionItem>
           <AccordionItem>

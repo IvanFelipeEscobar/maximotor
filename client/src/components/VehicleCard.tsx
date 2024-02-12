@@ -2,7 +2,7 @@ import { Button, Card, CardBody, CardFooter, CardHeader, Heading, Text } from "@
 
 const VehicleCard = () => {
   return (
-    <Card align='center'>
+    <Card align='center' >
     <CardHeader>
       <Heading size='md'> Customer dashboard</Heading>
     </CardHeader>

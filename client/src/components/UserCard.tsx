@@ -1,38 +1,44 @@
 import {
-  Box,
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Button,
   Heading,
   Text,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import { UDProps } from "./UserInfo";
 
 const UserCard = ({ userData }: UDProps) => {
+  function formatFullName(firstName: string, lastName: string): string {
+    // Capitalize the first character of the first name and make the rest lowercase
+    const formattedFirstName =
+      firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase();
+
+    // Capitalize the first character of the last name and make the rest lowercase
+    const formattedLastName =
+      lastName.charAt(0).toUpperCase() + lastName.slice(1).toLowerCase();
+
+    // Concatenate the formatted first name and last name with a space in between
+
+    return `${formattedFirstName} ${formattedLastName}`;
+  }
+  const firstName = userData.userInformation?.firstName || "";
+  const lastName = userData.userInformation?.lastName || "";
+  const fullName = formatFullName(firstName, lastName);
   return (
-      <Box
-        maxW={"320px"}
-        w={"full"}
-        bg={useColorModeValue("gray.100", "gray.900")}
-        boxShadow={"2xl"}
-        rounded={"lg"}
-        p={6}
-        textAlign={"center"}
-      >
-        <Heading fontSize={"2xl"} color={'gray.800'} fontFamily={"body"}>
-          {userData.userInformation?.firstName +
-            " " +
-            userData.userInformation?.lastName}
-        </Heading>
-        <Text fontWeight={600} color={"gray.500"} mb={4}>
-          {userData.email}
-        </Text>
-        <Text
-          textAlign={"center"}
-          color={useColorModeValue("gray.700", "gray.400")}
-          px={3}
-        >
-          {userData.userInformation?.phone}
-        </Text>
-      </Box>
+    <Card align="center">
+      <CardHeader>
+        <Heading size="md"> {fullName}</Heading>
+      </CardHeader>
+      <CardBody>
+        <Text>{userData.email}</Text>
+        <Text>{userData.userInformation?.phone}</Text>
+      </CardBody>
+      <CardFooter>
+        <Button colorScheme="blue">View here</Button>
+      </CardFooter>
+    </Card>
   );
 };
 

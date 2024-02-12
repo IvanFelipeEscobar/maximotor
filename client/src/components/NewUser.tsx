@@ -123,7 +123,7 @@ try {
                 <FormLabel>Phone number</FormLabel>
                 <InputGroup>
                   <Input
-                    type={"text"}
+                    type={"tel"}
                     id="phone"
                     value={formData.phone}
                     onChange={handleChange}
