@@ -137,7 +137,7 @@ export default function Services() {
                 boxShadow={"2xl"}
                 rounded={"md"}
                 p={8}
-                bg={"rgba(0,0,0,0.8)"}
+                bg={"rgba(41, 63, 137, 0.7)"}
                 overflow={"hidden"}
                 m={1}
               >
