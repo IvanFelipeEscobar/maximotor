@@ -3,7 +3,6 @@
 import {
   Box,
   Flex,
-  HStack,
   Button,
   useColorModeValue,
   Link,
@@ -33,14 +32,15 @@ export default function Navbar() {
     <>
       <Box
         bg={useColorModeValue("gray.100", "gray.900")}
-        py={[8, 1]}
+        py={[7, 1]}
         px={[2, 5]}
         pos={"fixed"}
+        top={'0'}
         w={"full"}
         zIndex={99}
         boxSizing={'border-box'}
       >
-        <Flex h={16} alignItems={"center"} flexWrap={'wrap'} justifyContent={["center", "space-between"]} gap={[4]} >
+        <Flex h={16} alignItems={"center"} flexWrap={'wrap'} justifyContent={'space-between'} >
           {/* <IconButton
             size={"md"}
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -48,7 +48,6 @@ export default function Navbar() {
             display={{ md: "none" }}
             onClick={isOpen ? onClose : onOpen}
           /> */}
-          <HStack alignItems={"center"}>
             <Box>
               <Link href={"/"}>
                 <Text
@@ -85,8 +84,7 @@ export default function Navbar() {
                   // </NavLink>
               ))}
             </HStack> */}
-          </HStack>
-          <Flex alignItems={"center"}>
+          <Flex gap={2} >
             <Menu>
               <MenuButton
                 as={Button}
@@ -95,11 +93,10 @@ export default function Navbar() {
                 bg={"red.400"}
                 _hover={{ bg: "red.500" }}
                 size={"sm"}
-                mr={4}
                 leftIcon={<HiOutlineUserCircle />}
                 visibility={['hidden', 'inherit']}
               >
-                {Auth.isLoggedIn() ? "Log out" : "Sign up / Login"}
+                {Auth.isLoggedIn() ? "Log out" : "Sign up/Login"}
               </MenuButton>
               <MenuButton
                 as={Button}
@@ -108,7 +105,6 @@ export default function Navbar() {
                 bg={"red.400"}
                 _hover={{ bg: "red.500" }}
                 size={"sm"}
-                mr={[4, 0]}
                 visibility={['inherit','hidden']}
               ><HiOutlineUserCircle /></MenuButton>
               <MenuList>
@@ -131,6 +127,7 @@ export default function Navbar() {
 
             <Button
               aria-label="Toggle Color Mode"
+              size={'sm'}
               onClick={toggleColorMode}
               _focus={{ boxShadow: "none" }}
               w="fit-content"
