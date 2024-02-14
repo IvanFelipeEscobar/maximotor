@@ -32,22 +32,14 @@ export default function Navbar() {
     <>
       <Box
         bg={useColorModeValue("gray.100", "gray.900")}
-        py={[7, 1]}
+        py={[5, 1]}
         px={[2, 5]}
         pos={"fixed"}
         top={'0'}
         w={"full"}
         zIndex={99}
-        boxSizing={'border-box'}
       >
-        <Flex h={16} alignItems={"center"} flexWrap={'wrap'} justifyContent={'space-between'} >
-          {/* <IconButton
-            size={"md"}
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-            aria-label={"Open Menu"}
-            display={{ md: "none" }}
-            onClick={isOpen ? onClose : onOpen}
-          /> */}
+        <Flex h={16} alignItems={"center"} flexWrap={'wrap'} justifyContent={['space-around', 'space-between']} gap={3} >
             <Box>
               <Link href={"/"}>
                 <Text
@@ -64,26 +56,8 @@ export default function Navbar() {
                 </Text>
               </Link>
             </Box>
-            {/* <HStack
-              as={"nav"}
-              spacing={4}
-              display={{ base: "flex", md: "flex" }}
-            >
-              {Links.map((link) => (
-                  <Link   as="a"
-                  px={2}
-                  py={1}
-                  rounded={"md"}
-                  _hover={{
-                    textDecoration: "none",
-                    bg: 
-                    // useColorModeValue(
-                      "gray.200", 
-                      // "gray.700"),
-                  }}key={link.a} href={link.b}>{link.a}</Link>
-                  // </NavLink>
-              ))}
-            </HStack> */}
+
+
           <Flex gap={2} >
             <Menu>
               <MenuButton
@@ -114,12 +88,8 @@ export default function Navbar() {
                   </MenuItem>
                 ) : (
                   <>
-                    <Link href={"/login"}>
-                      <MenuItem>Login</MenuItem>
-                    </Link>
-                    <Link href={"/signup"}>
-                      <MenuItem>Sign up</MenuItem>
-                    </Link>
+                      <MenuItem as={'a'} href="/login">Login</MenuItem>
+                      <MenuItem as={'a'} href="/signup">Sign up</MenuItem>
                   </>
                 )}
               </MenuList>
@@ -136,16 +106,6 @@ export default function Navbar() {
             </Button>
           </Flex>
         </Flex>
-
-        {/* {isOpen && (
-          <Box pb={4} display={{ md: "none" }}>
-            <Stack as={"nav"} spacing={4}>
-              {Links.map((link) => (
-                  <Link key={link.a} href={link.b}>{link.a}</Link>
-              ))}
-            </Stack>
-          </Box>
-        ) } */}
       </Box>
     </>
   );

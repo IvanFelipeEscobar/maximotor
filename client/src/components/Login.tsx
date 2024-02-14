@@ -41,8 +41,11 @@ export default function Login() {
     }
     try {
       const response = await signIn(userData);
-      if (!response.ok)
-        throw new Error("something went wrong in the sign up process");
+      
+      if (!response.ok){
+     const x = await response.json()
+    console.log(x)
+        throw new Error("something went wrong in the sign up process");}
       const newUser = await response.json();
       Auth.login(newUser.token)
     } catch (error) {
@@ -51,7 +54,7 @@ export default function Login() {
   }
   return (
     <Flex minH={"100vh"} align={"center"} justify={"center"} >
-      <Stack spacing={8} mx={"auto"} maxW={"lg"} mt={8} py={12} px={6}>
+      <Stack spacing={8} mx={"auto"} maxW={"lg"} mt={20} py={12} px={6}>
         <Stack align={"center"}>
           <Heading fontSize={"4xl"} color={"aliceblue"}>
             Sign in to your account

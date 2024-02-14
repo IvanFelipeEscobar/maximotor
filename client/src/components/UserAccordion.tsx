@@ -19,6 +19,7 @@ import { Auth } from "../utils/auth";
 import { getUserInfo } from "../utils/api-requests";
 import { User } from "../utils/types";
 import VehicleCard from './VehicleCard';
+import VehiclePicker from './VehiclePicker';
 
 export default function UserAccordion() {
     const [userData, setUserData] = useState<User | null>(null);
@@ -71,7 +72,8 @@ export default function UserAccordion() {
               <ChevronDownIcon fontSize="24px" />
             </AccordionButton>
             <AccordionPanel pb={4}>
-              <VehicleCard/>
+              {/* <VehicleCard/> */}
+              <VehiclePicker/>
             </AccordionPanel>
           </AccordionItem>
           <AccordionItem>
