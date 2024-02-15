@@ -72,7 +72,7 @@ export default function UserAccordion() {
               <ChevronDownIcon fontSize="24px" />
             </AccordionButton>
             <AccordionPanel pb={4}>
-              {/* <VehicleCard/> */}
+              <VehicleCard/>
               <VehiclePicker/>
             </AccordionPanel>
           </AccordionItem>
