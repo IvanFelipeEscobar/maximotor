@@ -5,8 +5,13 @@ import {
   Heading,
   Text,
   VStack,
+  Menu,
+  MenuButton,
+  Button,
+  MenuList,
 } from "@chakra-ui/react";
 import { UDProps } from "./UserInfo";
+import { FaCarSide } from "react-icons/fa";
 
 const UserCard = ({ userData }: UDProps) => {
   function formatFullName(firstName: string, lastName: string): string {
@@ -32,12 +37,38 @@ const UserCard = ({ userData }: UDProps) => {
   const state = userData.userInformation?.state || "";
   const zip = userData.userInformation?.zip || "";
   return (
-    <Card align="center" >
+    <Card align="center" w={'xl'}>
       <CardHeader>
         <Heading size="md">{fullName}</Heading>
       </CardHeader>
       <CardBody>
-        <VStack align="start">
+      <Menu>
+              <MenuButton
+                as={Button}
+                variant={"solid"}
+                colorScheme={"red"}
+                bg={"red.400"}
+                _hover={{ bg: "red.500" }}
+                size={"sm"}
+                // leftIcon={<HiOutlineUserCircle />}
+                visibility={['hidden', 'inherit']}
+              >
+                Show user info
+              </MenuButton>
+              <MenuButton
+                as={Button}
+                variant={"solid"}
+                colorScheme={"red"}
+                bg={"red.400"}
+                _hover={{ bg: "red.500" }}
+                size={"sm"}
+                visibility={['inherit','hidden']}
+              ><FaCarSide /></MenuButton>
+              <MenuList>
+
+              </MenuList>
+            </Menu>
+        <VStack>
           <Text>{userData.email}</Text>
           <Text>{userData.userInformation?.phone}</Text>
           <Text>

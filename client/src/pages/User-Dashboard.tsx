@@ -16,7 +16,7 @@ const UserDashboard = () => {
       <Stack
         align={['center']}
         spacing={{ base: 8, md: 10 }}
-        py={{ base: 16, md: 20 }}>
+        py={{ base: 20, md: 24 }}>
         <Stack flex={1} spacing={{ base: 5, md: 10 }} marginTop={{base:8, md: 16}} align={['center']}>
           <Heading
             lineHeight={1.1}

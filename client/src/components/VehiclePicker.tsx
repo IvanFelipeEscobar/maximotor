@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Select, Stack } from '@chakra-ui/react';
+import React, { useState, useEffect } from "react";
+import { Select, Stack } from "@chakra-ui/react";
 
 const VehiclePicker: React.FC = () => {
   const [years, setYears] = useState<number[]>([]);
@@ -7,31 +7,86 @@ const VehiclePicker: React.FC = () => {
   const [models, setModels] = useState<string[]>([]);
   const [selectedYear, setSelectedYear] = useState<number | undefined>();
   const [selectedMake, setSelectedMake] = useState<string | undefined>();
+  // const [selectedModel, setSelectedModel] = useState< string | undefined>()
 
   useEffect(() => {
-    // Populate years from 1969 to current year
+    // Populate years from 1990 to current year
     const currentYear = new Date().getFullYear();
-    const yearsArray = Array.from({ length: currentYear - 1969 + 1 }, (_, index) => currentYear - index);
+    const yearsArray = Array.from(
+      { length: currentYear - 1990 + 1 },
+      (_, index) => currentYear - index
+    );
     setYears(yearsArray);
   }, []);
 
-  const handleYearChange = (year: number) => {
+  const handleYearChange = async (year: number) => {
     setSelectedYear(year);
-    // Fetch makes for the selected year (replace with your logic)
-    // For now, let's just set some example makes
-    setMakes(['Make1', 'Make2', 'Make3']);
+    interface CarData {
+      id: number;
+      name: string;
+    }
+    const url = `https://car-api2.p.rapidapi.com/api/makes?direction=asc&sort=id&year=${year}`;
+    const options: RequestInit = {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": "39252068ccmsh6bf7b2af47cd46ep115570jsn1744edce3ec2",
+        "X-RapidAPI-Host": "car-api2.p.rapidapi.com",
+      },
+    };
+
+    try {
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const result = await response.json();
+      const formattedResult = result.data.map((el: CarData) => el.name);
+
+      const sortedResult = formattedResult.sort();
+      setMakes(sortedResult);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const handleMakeChange = (make: string) => {
+  const handleMakeChange = async (make: string) => {
+    interface ModelData {
+      id: number;
+      make_id: number;
+      name: string;
+    }
     setSelectedMake(make);
-    // Fetch models for the selected year and make (replace with your logic)
-    // For now, let's just set some example models
-    setModels(['Model1', 'Model2', 'Model3']);
+    const url = `https://car-api2.p.rapidapi.com/api/models?make=${selectedMake}&sort=id&direction=asc&year=${selectedYear}`;
+    const options = {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": "39252068ccmsh6bf7b2af47cd46ep115570jsn1744edce3ec2",
+        "X-RapidAPI-Host": "car-api2.p.rapidapi.com",
+      },
+    };
+
+    try {
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const result = await response.json();
+
+      const formattedResult = result.data.map((el: ModelData) => el.name);
+      const sortedResult = formattedResult.sort();
+
+      setModels(sortedResult);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
     <Stack spacing={4}>
-      <Select placeholder="Select Year" onChange={(e) => handleYearChange(parseInt(e.target.value))}>
+      <Select
+        placeholder="Select Year"
+        onChange={(e) => handleYearChange(parseInt(e.target.value))}
+      >
         {years.map((year) => (
           <option key={year} value={year}>
             {year}
@@ -51,10 +106,7 @@ const VehiclePicker: React.FC = () => {
         ))}
       </Select>
 
-      <Select
-        placeholder="Select Model"
-        isDisabled={!selectedMake}
-      >
+      <Select placeholder="Select Model" isDisabled={!selectedMake}>
         {models.map((model) => (
           <option key={model} value={model}>
             {model}

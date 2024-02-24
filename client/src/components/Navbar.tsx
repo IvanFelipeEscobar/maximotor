@@ -58,7 +58,7 @@ export default function Navbar() {
             </Box>
 
 
-          <Flex gap={2} >
+          <Flex gap={2}>
             <Menu>
               <MenuButton
                 as={Button}
@@ -96,6 +96,7 @@ export default function Navbar() {
             </Menu>
 
             <Button
+            bg={useColorModeValue( "gray.400", "inherit")}
               aria-label="Toggle Color Mode"
               size={'sm'}
               onClick={toggleColorMode}
