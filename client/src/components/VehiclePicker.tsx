@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Select, Stack } from "@chakra-ui/react";
-
+const apiKey = import.meta.env.CAR_API_KEY
 const VehiclePicker: React.FC = () => {
   const [years, setYears] = useState<number[]>([]);
   const [makes, setMakes] = useState<string[]>([]);
@@ -29,7 +29,7 @@ const VehiclePicker: React.FC = () => {
     const options: RequestInit = {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": "39252068ccmsh6bf7b2af47cd46ep115570jsn1744edce3ec2",
+        "X-RapidAPI-Key": apiKey,
         "X-RapidAPI-Host": "car-api2.p.rapidapi.com",
       },
     };
@@ -56,12 +56,12 @@ const VehiclePicker: React.FC = () => {
       name: string;
     }
     setSelectedMake(make);
-    const url = `https://car-api2.p.rapidapi.com/api/models?make=${selectedMake}&sort=id&direction=asc&year=${selectedYear}`;
+    const url = `https://car-data.p.rapidapi.com/cars?limit=50&page=0&year=${selectedYear}&make=${make}`
     const options = {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": "39252068ccmsh6bf7b2af47cd46ep115570jsn1744edce3ec2",
-        "X-RapidAPI-Host": "car-api2.p.rapidapi.com",
+        "X-RapidAPI-Key": apiKey,
+        "X-RapidAPI-Host": "car-data.p.rapidapi.com",
       },
     };
 
@@ -71,10 +71,9 @@ const VehiclePicker: React.FC = () => {
         throw new Error("Network response was not ok");
       }
       const result = await response.json();
-
       const formattedResult = result.data.map((el: ModelData) => el.name);
       const sortedResult = formattedResult.sort();
-
+      console.log(sortedResult)
       setModels(sortedResult);
     } catch (error) {
       console.error(error);

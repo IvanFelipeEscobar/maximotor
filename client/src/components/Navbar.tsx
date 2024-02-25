@@ -83,8 +83,7 @@ export default function Navbar() {
               ><HiOutlineUserCircle /></MenuButton>
               <MenuList>
                 {Auth.isLoggedIn() ? (
-                  <MenuItem>
-                    <Button onClick={() => Auth.logout()}>Logout</Button>
+                  <MenuItem as={'button'} onClick={() => Auth.logout()}>Logout
                   </MenuItem>
                 ) : (
                   <>

@@ -8,7 +8,6 @@ export interface UDProps {
   userData: User
 }
 const UserInfo = ({userData} : UDProps)  => {
-  console.table(userData.userInformation)
   return (
     <Center py={{ base: 2, md: 8 }}>
      { userData.userInformation ? <UserCard userData={userData}/> : <NewUser/> }
