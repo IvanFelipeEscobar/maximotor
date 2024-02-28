@@ -26,7 +26,6 @@ const apiKey = import.meta.env.VITE_CAR_API
       id: number;
       name: string;
     }
-    console.log(apiKey)
     const url = `https://car-api2.p.rapidapi.com/api/makes?direction=asc&sort=id&year=${year}`;
     const options: RequestInit = {
       method: "GET",
