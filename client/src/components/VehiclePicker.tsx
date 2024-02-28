@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Select, Stack } from "@chakra-ui/react";
-const apiKey = import.meta.env.CAR_API_KEY
 const VehiclePicker: React.FC = () => {
+
+const apiKey = import.meta.env.VITE_CAR_API
   const [years, setYears] = useState<number[]>([]);
   const [makes, setMakes] = useState<string[]>([]);
   const [models, setModels] = useState<string[]>([]);
@@ -25,6 +26,7 @@ const VehiclePicker: React.FC = () => {
       id: number;
       name: string;
     }
+    console.log(apiKey)
     const url = `https://car-api2.p.rapidapi.com/api/makes?direction=asc&sort=id&year=${year}`;
     const options: RequestInit = {
       method: "GET",
@@ -53,11 +55,13 @@ const VehiclePicker: React.FC = () => {
     interface ModelData {
       id: number;
       make_id: number;
-      name: string;
+      make: string;
+      model: string;
+      type: string;
     }
     setSelectedMake(make);
     const url = `https://car-data.p.rapidapi.com/cars?limit=50&page=0&year=${selectedYear}&make=${make}`
-    const options = {
+    const options : RequestInit = {
       method: "GET",
       headers: {
         "X-RapidAPI-Key": apiKey,
@@ -71,9 +75,8 @@ const VehiclePicker: React.FC = () => {
         throw new Error("Network response was not ok");
       }
       const result = await response.json();
-      const formattedResult = result.data.map((el: ModelData) => el.name);
+      const formattedResult = result.map((el: ModelData) => el.model);
       const sortedResult = formattedResult.sort();
-      console.log(sortedResult)
       setModels(sortedResult);
     } catch (error) {
       console.error(error);

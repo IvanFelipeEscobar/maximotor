@@ -1,6 +1,5 @@
 import {
   Card,
-  CardHeader,
   CardBody,
   Heading,
   Text,
@@ -33,12 +32,11 @@ const UserCard = ({ userData }: UDProps) => {
   const zip = userData.userInformation?.zip || "";
   return (
     <Card align="center" w={'xl'}>
-      <CardHeader>
-        <Heading size="md">{fullName}</Heading>
-      </CardHeader>
       <CardBody>
     
         <VStack>
+        <Heading size="md">{fullName}</Heading>
+
           <Text>{userData.email}</Text>
           <Text>{userData.userInformation?.phone}</Text>
           <Text>
