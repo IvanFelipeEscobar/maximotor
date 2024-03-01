@@ -6,8 +6,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Landing from "./pages/Landing.tsx";
 import Signup from "./components/Signup.tsx";
 import Login from "./components/Login.tsx";
-import Services from "./components/Services.tsx";
 import UserDashboard from "./pages/User-Dashboard.tsx";
+import Appointment from "./pages/Appointment.tsx";
 // import NewUser from "./components/NewUser.tsx";
 const router = createBrowserRouter([
   {
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
       {index: true, element: <Landing/>},
       {path: '/signup', element: <Signup/>}, 
       {path: '/login', element: <Login/>},
-      {path: '/appointments', element: <Services/>}, //todo: make appointments page
+      {path: '/appointments', element: <Appointment/>}, //todo: make appointments page
       {path: '/user-dashboard', element: <UserDashboard/>},//to do: user dash
     ]
   }

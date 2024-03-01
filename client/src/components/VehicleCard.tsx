@@ -1,4 +1,4 @@
-import { Card, CardBody, CardFooter, CardHeader, Heading, Text } from "@chakra-ui/react"
+import { Card, CardBody, CardFooter, Text } from "@chakra-ui/react"
 
 import VehiclePickerButton from "./VehiclePickerButton"
 

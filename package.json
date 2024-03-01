@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "react-datepicker": "^6.2.0"
   },
   "scripts": {
     "start": "concurrently \"cd server && npm start\" \"cd client && npm start\""
