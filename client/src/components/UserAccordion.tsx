@@ -18,8 +18,8 @@ import { useEffect, useState } from "react";
 import { Auth } from "../utils/auth";
 import { getUserInfo } from "../utils/api-requests";
 import { User } from "../utils/types";
-// import VehicleCard from './VehicleCard';
-import VehiclePicker from './VehiclePicker';
+import VehicleCard from './VehicleCard';
+// import VehiclePicker from './VehiclePicker';
 
 export default function UserAccordion() {
     const [userData, setUserData] = useState<User | null>(null);
@@ -47,6 +47,7 @@ export default function UserAccordion() {
       justify={'center'}>
       <Container>
         <Accordion color={useColorModeValue('gray.100', 'gray.900')} allowMultiple width="100%" maxW="lg" rounded="lg">
+{/* USER   */}
           <AccordionItem>
             <AccordionButton
             fontWeight={'bold'}
@@ -61,6 +62,7 @@ export default function UserAccordion() {
       {userData && <UserInfo userData={userData}/>}
             </AccordionPanel>
           </AccordionItem>
+ {/* VEHICLES  */}
           <AccordionItem>
             <AccordionButton
             fontWeight={'bold'}
@@ -72,10 +74,12 @@ export default function UserAccordion() {
               <ChevronDownIcon fontSize="24px" />
             </AccordionButton>
             <AccordionPanel pb={4}>
-              {/* <VehicleCard/> */}
-              <VehiclePicker/>
+
+              <VehicleCard/>
+              {/* <VehiclePicker/> */}
             </AccordionPanel>
           </AccordionItem>
+  {/* REPAIRS  */}
           <AccordionItem>
             <AccordionButton
             fontWeight={'bold'}
@@ -88,10 +92,7 @@ export default function UserAccordion() {
             </AccordionButton>
             <AccordionPanel pb={4}>
               <Text color="gray.400">
-                To get started with Chakra UI, you can install it via npm or yarn, and
-                then import the components you need in your project. The Chakra UI
-                documentation is also a great resource for getting started and learning
-                more about the library.
+              add repair history here
               </Text>
             </AccordionPanel>
           </AccordionItem>

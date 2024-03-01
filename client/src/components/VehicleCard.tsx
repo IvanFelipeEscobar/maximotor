@@ -1,16 +1,15 @@
-import { Button, Card, CardBody, CardFooter, CardHeader, Heading, Text } from "@chakra-ui/react"
+import { Card, CardBody, CardFooter, CardHeader, Heading, Text } from "@chakra-ui/react"
+
+import VehiclePickerButton from "./VehiclePickerButton"
 
 const VehicleCard = () => {
   return (
     <Card align='center' >
-    <CardHeader>
-      <Heading size='md'> Customer dashboard</Heading>
-    </CardHeader>
     <CardBody>
-      <Text>View a summary of all your customers over the last month.</Text>
+      <Text>your vehicle will appear here when you add one</Text>
     </CardBody>
     <CardFooter>
-      <Button colorScheme='blue'>View here</Button>
+      <VehiclePickerButton/>
     </CardFooter>
   </Card>
   )
