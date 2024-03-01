@@ -81,7 +81,6 @@ export default function Appointment() {
                 placeholder="name"
                 name="name"
                 bg={"gray.100"}
-                border={0}
                 color={"gray.500"}
                 _placeholder={{
                   color: "gray.500",
@@ -93,7 +92,6 @@ export default function Appointment() {
                 placeholder="email"
                 name="email"
                 bg={"gray.100"}
-                border={0}
                 color={"gray.500"}
                 _placeholder={{
                   color: "gray.500",
@@ -102,7 +100,6 @@ export default function Appointment() {
               <Input
                 placeholder="phone number"
                 bg={"gray.100"}
-                border={0}
                 color={"gray.500"}
                 _placeholder={{
                   color: "gray.500",
@@ -111,16 +108,22 @@ export default function Appointment() {
               <Textarea
                 placeholder="what can we help you with?"
                 bg={"gray.100"}
-                border={0}
                 color={"gray.500"}
                 _placeholder={{
                   color: "gray.500",
                 }}
+                name="repairs_requested"
+                required
               />
               <HStack>
                 <Input
                 type="date"
                 name="appointment_date"
+                bg={"gray.100"}
+                color={"gray.500"}
+                _placeholder={{
+                  color: "gray.500",
+                }}
                 required/>
               </HStack>
             </Stack>
