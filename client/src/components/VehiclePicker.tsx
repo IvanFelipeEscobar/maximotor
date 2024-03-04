@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Select, Stack } from "@chakra-ui/react";
+import { Button, Select, Stack, Text } from "@chakra-ui/react";
+import { FaCarSide } from "react-icons/fa";
+import { Auth } from "../utils/auth";
+import { addNewVehicle } from "../utils/api-requests";
 const VehiclePicker: React.FC = () => {
-
-const apiKey = import.meta.env.VITE_CAR_API
+  const apiKey = import.meta.env.VITE_CAR_API;
   const [years, setYears] = useState<number[]>([]);
   const [makes, setMakes] = useState<string[]>([]);
   const [models, setModels] = useState<string[]>([]);
   const [selectedYear, setSelectedYear] = useState<number | undefined>();
   const [selectedMake, setSelectedMake] = useState<string | undefined>();
-  // const [selectedModel, setSelectedModel] = useState< string | undefined>()
+  const [selectedModel, setSelectedModel] = useState<string | undefined>();
 
   useEffect(() => {
     // Populate years from 1990 to current year
@@ -59,8 +61,8 @@ const apiKey = import.meta.env.VITE_CAR_API
       type: string;
     }
     setSelectedMake(make);
-    const url = `https://car-data.p.rapidapi.com/cars?limit=50&page=0&year=${selectedYear}&make=${make}`
-    const options : RequestInit = {
+    const url = `https://car-data.p.rapidapi.com/cars?limit=50&page=0&year=${selectedYear}&make=${make}`;
+    const options: RequestInit = {
       method: "GET",
       headers: {
         "X-RapidAPI-Key": apiKey,
@@ -81,7 +83,29 @@ const apiKey = import.meta.env.VITE_CAR_API
       console.error(error);
     }
   };
+  const submitVehicle = async () => {
+    const token = Auth.isLoggedIn() ? Auth.getToken() : null;
+    if (!token || Auth.isTokenExpired(token)) {
+      Auth.logout();
+      return;
+    }
+    if (!selectedYear || !selectedMake || !selectedModel) {
+      console.error('Please select a year, make, and model');
+      return;
+    }
+    const data = {
+      year: selectedYear,
+      make: selectedMake,
+      model: selectedModel
+    }
+try {
+  const response =  await addNewVehicle(data, token)
+  if (response.ok) window.location.assign('/user-dashboard')
+} catch (error) {
+  console.error('Error submitting form data:', error);
+}
 
+  };
   return (
     <Stack spacing={4}>
       <Select
@@ -107,13 +131,27 @@ const apiKey = import.meta.env.VITE_CAR_API
         ))}
       </Select>
 
-      <Select placeholder="Select Model" isDisabled={!selectedMake}>
+      <Select
+        placeholder="Select Model"
+        isDisabled={!selectedMake}
+        onChange={(e) => setSelectedModel(e.target.value)}
+      >
         {models.map((model) => (
           <option key={model} value={model}>
             {model}
           </option>
         ))}
       </Select>
+      <Button
+        variant={"solid"}
+        colorScheme={"red"}
+        bg={"red.400"}
+        _hover={{ bg: "red.500" }}
+        onClick={submitVehicle}
+      >
+        <Text paddingRight={2}>Add vehicle</Text>
+        <FaCarSide />
+      </Button>
     </Stack>
   );
 };

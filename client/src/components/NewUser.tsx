@@ -80,7 +80,6 @@ try {
       ...formData,
       [e.target.id]: e.target.value,
     });
-    console.table(formData)
   };
   
   return (

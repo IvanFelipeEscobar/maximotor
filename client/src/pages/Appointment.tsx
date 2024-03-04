@@ -99,6 +99,7 @@ export default function Appointment() {
               />
               <Input
                 placeholder="phone number"
+                name="phone_number"
                 bg={"gray.100"}
                 color={"gray.500"}
                 _placeholder={{

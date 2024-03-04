@@ -12,6 +12,11 @@ interface UserInfoInput {
     state?: string,
     zip?: string,
 }
+interface VehicleInput {
+    year: number;
+    make: string;
+    model: string;
+}
 const apiUrl: string = process.env.NODE_ENV === 'production'
   ? 'https://maximotor-server.vercel.app'
   : 'http://localhost:3001';
@@ -55,6 +60,17 @@ export const addUserInfo = async (input: UserInfoInput, token: string) => {
         headers: {
             'Content-Type': 'application/json',
             authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(input)
+    })
+}
+
+export const addNewVehicle = async (input: VehicleInput, token: string) => {
+    return await fetch(`${apiUrl}/api/users/vehicles`, {
+        method: 'POST',
+        headers: { 
+            'Content-Type': 'application/json',
+        authorization: `Bearer ${token}`
         },
         body: JSON.stringify(input)
     })

@@ -8,7 +8,6 @@ import Signup from "./components/Signup.tsx";
 import Login from "./components/Login.tsx";
 import UserDashboard from "./pages/User-Dashboard.tsx";
 import Appointment from "./pages/Appointment.tsx";
-// import NewUser from "./components/NewUser.tsx";
 const router = createBrowserRouter([
   {
     path: '/',
@@ -17,8 +16,8 @@ const router = createBrowserRouter([
       {index: true, element: <Landing/>},
       {path: '/signup', element: <Signup/>}, 
       {path: '/login', element: <Login/>},
-      {path: '/appointments', element: <Appointment/>}, //todo: make appointments page
-      {path: '/user-dashboard', element: <UserDashboard/>},//to do: user dash
+      {path: '/appointments', element: <Appointment/>}, 
+      {path: '/user-dashboard', element: <UserDashboard/>},
     ]
   }
 ])
