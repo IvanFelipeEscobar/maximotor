@@ -106,8 +106,9 @@ try {
 }
 
   };
-  return (
-    <Stack spacing={4}>
+  return (<form onSubmit={submitVehicle}>
+
+<Stack spacing={4}>
       <Select
         placeholder="Select Year"
         onChange={(e) => handleYearChange(parseInt(e.target.value))}
@@ -143,6 +144,7 @@ try {
         ))}
       </Select>
       <Button
+      type="submit"
         variant={"solid"}
         colorScheme={"red"}
         bg={"red.400"}
@@ -153,6 +155,7 @@ try {
         <FaCarSide />
       </Button>
     </Stack>
+  </form>
   );
 };
 
