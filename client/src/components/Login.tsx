@@ -43,8 +43,6 @@ export default function Login() {
       const response = await signIn(userData);
       
       if (!response.ok){
-     const x = await response.json()
-    console.log(x)
         throw new Error("something went wrong in the sign up process");}
       const newUser = await response.json();
       Auth.login(newUser.token)

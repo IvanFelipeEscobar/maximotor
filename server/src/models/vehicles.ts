@@ -17,9 +17,6 @@ export class Vehicle {
   @prop({ required: true })
   public model!: string;
 
-  @prop()
-  public mileage?: number;
-
   @prop({type: () => [Repairs]})
   public repairs?: Repairs[]
 };

@@ -1,7 +1,6 @@
 import { user } from "../models/user";
 import { userInfo } from "../models/user-info";
 import { Request, Response } from "express";
-import { signToken } from "../utils/auth";
 
 export const addUserInfo = async (req: Request, res: Response) => {
   try {
@@ -24,13 +23,13 @@ export const addUserInfo = async (req: Request, res: Response) => {
 };
 export const editUserInfo = async (req: Request, res: Response) => {
    try {
-      const  {userInfoId} = req.params
+      const userId = req.user._id
       const editedInfo = await userInfo.findOneAndUpdate(
-         {_id: userInfoId},
+         {_id: userId},
          {$set: req.body},
          {new: true, runValidators: true}
       )
-      if(!editedInfo)return res.status(400).json({message: 'can edit info, chenck input'})
+      if(!editedInfo)return res.status(400).json({message: 'cant edit info, chenck input'})
       res.status(200).json(editedInfo)   // make sure you need to send this data here!!!
    } catch (error) {
       console.error(error);

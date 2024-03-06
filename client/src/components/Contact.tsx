@@ -71,13 +71,13 @@ export default function Contact() {
                         maximotor@bellsouth.net
                       </Button>
         <Text as={'b'}>Adress:</Text>
-        <Button 
+        <Button
                         size="md" height={'64px'}
 
                         _hover={{ border: '2px solid #1C6FEB' }}
                         leftIcon={<MdLocationOn color="#1970F1" size="20px" />}>
-                        2548 Austell rd <br/>
-                        Marietta, GA 30008
+                        <a href="https://www.google.com/maps/place/2548+Austell+Rd+SW,+Marietta,+GA+30008/@33.8912726,-84.5817381,17z/data=!3m1!4b1!4m6!3m5!1s0x88f517b0c5eb9eef:0xe5467f0ca5bb4138!8m2!3d33.8912726!4d-84.5791632!16s%2Fg%2F11bw4cysxs?entry=ttu" target="_blank">2548 Austell rd <br/>
+                        Marietta, GA 30008</a>
 
                       </Button>
         <Map apiKey={apiKey!} shopLocation={position} />

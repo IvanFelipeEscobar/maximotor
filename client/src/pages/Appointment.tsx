@@ -12,8 +12,6 @@ import {
   HStack,
 } from "@chakra-ui/react";
 
-import "react-datepicker/dist/react-datepicker.css";
-
 export default function Appointment() {
   return (
     <Box position={"relative"} paddingTop={16}>
