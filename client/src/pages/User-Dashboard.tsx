@@ -51,7 +51,9 @@ const UserDashboard = () => {
               colorScheme={'red'}
               bg={'red.400'}
               _hover={{ bg: 'red.500' }}
-              leftIcon={<FaCalendarDays/>}>
+              leftIcon={<FaCalendarDays/>}
+              as={'a'}
+              href='/appointments'>
               Schedule an Appointment 
             </Button>
           </Stack>
