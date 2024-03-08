@@ -12,6 +12,7 @@ import {
   MenuItem,
   useColorMode,
   Text,
+  Stack,
 } from "@chakra-ui/react";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import { Auth } from "../utils/auth";
@@ -39,7 +40,7 @@ export default function Navbar() {
         w={"full"}
         zIndex={99}
       >
-        <Flex h={16} alignItems={"center"} flexWrap={'wrap'} justifyContent={['space-around', 'space-between']} gap={3} >
+        <Flex h={16} alignItems={"center"} justifyContent={['space-between']} >
             <Box>
               <Link href={"/"}>
                 <Text
@@ -58,7 +59,9 @@ export default function Navbar() {
             </Box>
 
 
-          <Flex gap={2}>
+          <Flex alignItems={'center'}>
+
+          <Stack direction={'row'} spacing={2}>
             <Menu>
               <MenuButton
                 as={Button}
@@ -68,7 +71,7 @@ export default function Navbar() {
                 _hover={{ bg: "red.500" }}
                 size={"sm"}
                 leftIcon={<HiOutlineUserCircle />}
-                visibility={['hidden', 'inherit']}
+                display={['none', 'inherit']}
               >
                 {Auth.isLoggedIn() ? "Log out" : "Sign up/Login"}
               </MenuButton>
@@ -79,7 +82,7 @@ export default function Navbar() {
                 bg={"red.400"}
                 _hover={{ bg: "red.500" }}
                 size={"sm"}
-                visibility={['inherit','hidden']}
+                display={['inherit','none']}
               ><HiOutlineUserCircle /></MenuButton>
               <MenuList>
                 {Auth.isLoggedIn() ? (
@@ -104,6 +107,7 @@ export default function Navbar() {
             >
               {colorMode === "light" ? <BsMoonStarsFill /> : <BsSun />}
             </Button>
+            </Stack>
           </Flex>
         </Flex>
       </Box>
