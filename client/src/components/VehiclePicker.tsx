@@ -153,7 +153,6 @@ const VehiclePicker: React.FC = () => {
           colorScheme={"red"}
           bg={"red.400"}
           _hover={{ bg: "red.500" }}
-          onClick={submitVehicle}
         >
           <Text paddingRight={2}>Add vehicle</Text>
           <FaCarSide />
