@@ -97,21 +97,24 @@ export default function Navbar() {
                 leftIcon={<HiOutlineUserCircle />}
                 visibility={["collapse", "inherit"]}
               >
-                {Auth.isLoggedIn() ? "Log out" : "Sign up/Login"}
+                {Auth.isLoggedIn() ? "Menu" : "Sign up/Login"}
               </MenuButton>
               <MenuList alignItems={"center"}>
-                {isHomePage && navLinks.map((link) => (
-                  <MenuItem as={"a"} href={link.b} key={link.a}>
-                    {link.a}
-                  </MenuItem>
-                ))}
-<MenuDivider/>
+                {isHomePage &&
+                  navLinks.map((link) => (
+                    <MenuItem as={"a"} href={link.b} key={link.a}>
+                      {link.a}
+                    </MenuItem>
+                  ))}
+                <MenuDivider />
                 <MenuItem as={"a"} href="/appointments">
                   Make an appointment
                 </MenuItem>
-                <MenuItem as={"a"} href="/user-dashboard">
-                  User dashboard
-                </MenuItem>
+                {Auth.isLoggedIn() && (
+                  <MenuItem as={"a"} href="/user-dashboard">
+                    User dashboard
+                  </MenuItem>
+                )}
                 <MenuDivider />
 
                 {Auth.isLoggedIn() ? (

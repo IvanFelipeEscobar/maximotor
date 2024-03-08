@@ -33,7 +33,8 @@ export default function UserAccordion() {
         try {
           const res = await getUserInfo(token);
           const data: User = await res.json();
-          setUserData(data as User);
+          setUserData(data as User); 
+          console.log(data)
         } catch (error) {
           console.error(error);
         }

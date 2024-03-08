@@ -30,7 +30,7 @@ export class User {
   @prop({ required: true })
   public password!: string;
 
-  @prop({ type: () => UserInfo })
+  @prop({ type: () => UserInfo, unique: true })
   public userInformation?: UserInfo;
 
   @prop({ type: () => [Vehicle] })
