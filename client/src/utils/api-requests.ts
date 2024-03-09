@@ -1,3 +1,5 @@
+import { RepairInfo } from "./types";
+
 interface UserInput  {
     email: string
     password: string
@@ -17,6 +19,7 @@ interface VehicleInput {
     make: string;
     model: string;
 }
+
 const apiUrl: string = process.env.NODE_ENV === 'production'
   ? 'https://maximotor-server.vercel.app'
   : 'http://localhost:3001';
@@ -74,4 +77,15 @@ export const addNewVehicle = async (input: VehicleInput, token: string) => {
         },
         body: JSON.stringify(input)
     })
+}
+
+export const addRepair = async ( input: RepairInfo, vehicleId: string ) => {
+    return await fetch(`${apiUrl}/api/users/vehicles/${vehicleId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(input)
+    })
+
 }

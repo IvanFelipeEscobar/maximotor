@@ -1,6 +1,8 @@
-export interface Repairs {
-    parts: string[];
-    repair: string;
+export interface RepairInfo {
+    parts: string;
+    repairs: string;
+    mileage?: string;
+    dateOfRepair?: string
 }
 
 export interface UserInfo {
@@ -19,7 +21,8 @@ export interface Vehicle {
     make: string;
     model: string;
     mileage?: number;
-    repairs?: Repairs[];
+    repairs?: RepairInfo[];
+    _id: number;
 }
 
 export interface User {
@@ -28,3 +31,6 @@ export interface User {
     cars?: Vehicle[];
 
 }
+export interface UDProps {
+    userData: User 
+  }

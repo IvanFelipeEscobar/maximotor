@@ -10,21 +10,21 @@ import UserDashboard from "./pages/User-Dashboard.tsx";
 import Appointment from "./pages/Appointment.tsx";
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
     children: [
-      {index: true, element: <Landing/>},
-      {path: '/signup', element: <Signup/>}, 
-      {path: '/login', element: <Login/>},
-      {path: '/appointments', element: <Appointment/>}, 
-      {path: '/user-dashboard', element: <UserDashboard/>},
-    ]
-  }
-])
+      { index: true, element: <Landing /> },
+      { path: "/signup", element: <Signup /> },
+      { path: "/login", element: <Login /> },
+      { path: "/appointments", element: <Appointment /> },
+      { path: "/user-dashboard", element: <UserDashboard /> },
+    ],
+  },
+]);
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ChakraProvider>
-      <RouterProvider router={router}/>
+        <RouterProvider router={router} />
     </ChakraProvider>
   </React.StrictMode>
 );

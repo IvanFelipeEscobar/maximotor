@@ -18,9 +18,11 @@ const VehiclePickerButton = () => {
     <>
       <Button
         variant={"solid"}
-        colorScheme={"red"}
-        bg={"red.400"}
-        _hover={{ bg: "red.500" }}
+        bg={"blue.400"}
+        color={"white"}
+        _hover={{
+          bg: "blue.500",
+        }}
         onClick={onOpen}
       >
         <Text paddingRight={2}>Add vehicle</Text>

@@ -27,7 +27,7 @@ const Map: React.FC<MapComponentProps> = ({ apiKey, shopLocation }) => {
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         center={center}
-        zoom={17}
+        zoom={15}
       >
         {shopLocation && <Marker position={center} />}
       </GoogleMap>

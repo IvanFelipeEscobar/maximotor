@@ -1,12 +1,9 @@
 import {
   Center,
 } from "@chakra-ui/react";
-import { User } from "../utils/types";
 import NewUser from "./NewUser";
 import UserCard from "./UserCard";
-export interface UDProps {
-  userData: User
-}
+import { UDProps } from "../utils/types";
 const UserInfo = ({userData} : UDProps)  => {
   return (
     <Center py={{ base: 2, md: 8 }}>

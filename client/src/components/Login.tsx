@@ -58,6 +58,7 @@ export default function Login() {
             Sign in to your account
           </Heading>
         </Stack>
+        <form onSubmit={handleSubmit}>
         <Box
           rounded={"lg"}
           bg={useColorModeValue("white", "gray.700")}
@@ -104,7 +105,7 @@ export default function Login() {
                 _hover={{
                   bg: "blue.500",
                 }}
-                onClick={handleSubmit}
+                type={'submit'}
               >
                 Sign in
               </Button>
@@ -120,6 +121,7 @@ export default function Login() {
             </Stack>
           </Stack>
         </Box>
+        </form>
       </Stack>
     </Flex>
   );

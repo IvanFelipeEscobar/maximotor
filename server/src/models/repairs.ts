@@ -12,7 +12,10 @@ import { modelOptions, prop, getModelForClass } from "@typegoose/typegoose";
     public repair!: string;
 
     @prop()
-    public mileage?: number;
+    public mileage?: string;
+
+    @prop()
+    public dateOfRepair?: string
  }
 
  export const repairs = getModelForClass(Repairs)

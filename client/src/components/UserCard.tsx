@@ -1,5 +1,5 @@
 import { Card, CardBody, Heading, Text, VStack } from "@chakra-ui/react";
-import { UDProps } from "./UserInfo";
+import { UDProps } from "../utils/types";
 
 const UserCard = ({ userData }: UDProps) => {
   const formatWord = (word: string) =>
