@@ -33,7 +33,7 @@ export default function RepairForm({vehId}) {
     }
   }
   return (
-    <form>
+    <form onSubmit={addRepairFormSubmit}>
       <FormControl isRequired paddingBottom={2}>
         <InputGroup>
           <Input
