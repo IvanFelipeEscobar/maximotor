@@ -10,7 +10,7 @@ import {
 import React, { useState } from "react";
 import { FaWrench } from "react-icons/fa";
 import { addRepair } from "../utils/api-requests";
-export default function RepairForm({vehId}) {
+export default function RepairForm({vehId}: {vehId:string}) {
   const [repairData, setRepairData] = useState({
     parts: "",
     repairs: "",
