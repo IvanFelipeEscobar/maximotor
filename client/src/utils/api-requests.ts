@@ -80,7 +80,7 @@ export const addNewVehicle = async (input: VehicleInput, token: string) => {
 }
 
 export const addRepair = async ( input: RepairInfo, vehicleId: string ) => {
-    return await fetch(`${apiUrl}/api/users/vehicles/${vehicleId}`, {
+    return await fetch(`${apiUrl}/api/users/vehicles/repairs/${vehicleId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

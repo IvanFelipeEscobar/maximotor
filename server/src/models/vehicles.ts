@@ -17,7 +17,7 @@ export class Vehicle {
   @prop({ required: true })
   public model!: string;
 
-  @prop({type: () => [Repairs]})
+  @prop({type: () => [Repairs], unique:true})
   public repairs?: Repairs[]
 };
 

@@ -19,7 +19,7 @@ import { UDProps } from "../utils/types";
 import { FaTrash, FaWrench } from "react-icons/fa";
 import RepairForm from "./RepairForm";
 const VehicleCard = ({ userData }: UDProps) => {
-  if (userData) console.log(userData);
+  console.log(userData)
   return (
     userData.cars && (
       <Table variant="simple" size={["sm", "md"]}>

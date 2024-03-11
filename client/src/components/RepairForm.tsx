@@ -13,14 +13,13 @@ import { addRepair } from "../utils/api-requests";
 export default function RepairForm({vehId}: {vehId:string}) {
   const [repairData, setRepairData] = useState({
     parts: "",
-    repairs: "",
+    repair: "",
     mileage: "",
     dateOfRepair: "",
   });
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setRepairData({ ...repairData, [name]: value });
-    console.log(repairData)
   };
   const addRepairFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -28,6 +27,7 @@ export default function RepairForm({vehId}: {vehId:string}) {
     try {
       const res = await addRepair(repairData, vehicleId)
       if (!res.ok) throw new Error('Problem occured while adding repairs')
+      
     } catch (error) {
       console.error(error)
     }
@@ -50,8 +50,8 @@ export default function RepairForm({vehId}: {vehId:string}) {
         <InputGroup>
           <Input
             type="text"
-            name="repairs"
-            value={repairData.repairs}
+            name="repair"
+            value={repairData.repair}
             onChange={handleInput}
             placeholder="Repairs Performed"
           />

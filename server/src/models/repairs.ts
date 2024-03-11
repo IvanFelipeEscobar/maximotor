@@ -6,7 +6,7 @@ import { modelOptions, prop, getModelForClass } from "@typegoose/typegoose";
 })
  export class Repairs{
     @prop({type: () => [String], required: true})
-    public parts!: string[];
+    public parts!: string;
 
     @prop({required: true})
     public repair!: string;

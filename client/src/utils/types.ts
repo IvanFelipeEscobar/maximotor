@@ -1,6 +1,6 @@
 export interface RepairInfo {
     parts: string;
-    repairs: string;
+    repair: string;
     mileage?: string;
     dateOfRepair?: string
 }
