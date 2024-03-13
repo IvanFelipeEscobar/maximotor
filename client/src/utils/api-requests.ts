@@ -79,13 +79,9 @@ export const addNewVehicle = async (input: VehicleInput, token: string) => {
     })
 }
 
-export const deleteVehicle = async ( input: RepairInfo, vehicleId: string ) => {
+export const deleteVehicle = async (vehicleId: string ) => {
     return await fetch(`${apiUrl}/api/users/vehicles/${vehicleId}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(input)
+        method: 'DELETE'
     })
 
 }
