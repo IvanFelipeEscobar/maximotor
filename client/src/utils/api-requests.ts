@@ -79,6 +79,17 @@ export const addNewVehicle = async (input: VehicleInput, token: string) => {
     })
 }
 
+export const deleteVehicle = async ( input: RepairInfo, vehicleId: string ) => {
+    return await fetch(`${apiUrl}/api/users/vehicles/${vehicleId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(input)
+    })
+
+}
+
 export const addRepair = async ( input: RepairInfo, vehicleId: string ) => {
     return await fetch(`${apiUrl}/api/users/vehicles/repairs/${vehicleId}`, {
         method: 'POST',
@@ -89,3 +100,26 @@ export const addRepair = async ( input: RepairInfo, vehicleId: string ) => {
     })
 
 }
+
+export const editRepair = async ( input: RepairInfo, vehicleId: string, repairId: string ) => {
+    return await fetch(`${apiUrl}/api/users/vehicles/repairs/${vehicleId}/${repairId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(input)
+    })
+
+}
+
+export const deleteRepair = async (vehicleId: string,repairId: string ) => {
+    return await fetch(`${apiUrl}/api/users/vehicles/repairs/${vehicleId}/${repairId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+
+}
+
+
