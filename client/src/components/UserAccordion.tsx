@@ -97,7 +97,7 @@ export default function UserAccordion() {
               </Card>
             </AccordionPanel>
           </AccordionItem>
-          {/* REPAIRS  */}
+          {/* REPAIRS 
           <AccordionItem>
             <AccordionButton
               fontWeight={"bold"}
@@ -112,7 +112,7 @@ export default function UserAccordion() {
             <AccordionPanel pb={4}>
               <Text color="gray.400">add repair history here</Text>
             </AccordionPanel>
-          </AccordionItem>
+          </AccordionItem> */}
         </Accordion>
       </Container>
     </Flex>
