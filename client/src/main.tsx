@@ -14,14 +14,14 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <NotFound />,
     children: [
       { index: true, element: <Landing /> },
       { path: "/signup", element: <Signup /> },
       { path: "/login", element: <Login /> },
       { path: "/appointments", element: <Appointment /> },
       { path: "/user-dashboard", element: <UserDashboard /> },
-      {path: "/vehicles/:vehicleId", element: <SingleVehicleCard/>}
+      {path: "/vehicles/:vehicleId", element: <SingleVehicleCard/>},
+      {path: '*', element: <NotFound/>}
     ],
   },
 ]);
