@@ -38,7 +38,10 @@ const VehicleCard = ({ userData }: UDProps) => {
       console.error(error);
     }
   };
-
+  const handleRowClick = (vehicleId: string) => {
+    // Navigate to the specific vehicle details page when the row is clicked
+    window.location.assign(`/vehicles/${vehicleId}`);
+  };
   return (
     userData.cars && (
       <Table variant="simple" size={["sm", "md"]}>
@@ -53,9 +56,9 @@ const VehicleCard = ({ userData }: UDProps) => {
         <Tbody>
           {userData.cars.map((car) => (
             <Tr key={car._id} id={car._id.toString()}>
-              <Td>{car.year}</Td>
-              <Td>{car.make}</Td>
-              <Td>{car.model}</Td>
+              <Td  onClick={() => handleRowClick(car._id.toString())}>{car.year}</Td>
+              <Td  onClick={() => handleRowClick(car._id.toString())}>{car.make}</Td>
+              <Td  onClick={() => handleRowClick(car._id.toString())}>{car.model}</Td>
               <Td>
                 <Popover>
                   <PopoverTrigger>
@@ -126,7 +129,11 @@ const VehicleCard = ({ userData }: UDProps) => {
                             bg={"red.400"}
                             _hover={{rounded: 'full', bg: "red.500" }}
                             leftIcon={<FaTrash />}
-                            onClick={() => handleDelete(car._id.toString())}
+                            onClick={(e) => {
+                              e.stopPropagation(); // Prevent the click from propagating to the row
+                              handleDelete(car._id.toString());
+                            }}
+
                           >
                             Delete Vehicle
                           </Button>

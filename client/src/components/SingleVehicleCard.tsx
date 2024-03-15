@@ -1,3 +1,4 @@
+import { Button, Stack, Text, VStack, useBreakpointValue } from "@chakra-ui/react"
 import { useParams } from "react-router-dom"
 
 const SingleVehicleCard = () => {
@@ -5,7 +6,38 @@ const SingleVehicleCard = () => {
     const { vehicleId }= useParams()
     console.log(vehicleId)
   return (
-    <div>SingleVehicleCard</div>
+    <VStack
+        w={'full'}
+        justify={'center'}
+        px={useBreakpointValue({ base: 4, md: 8 })}
+        py={20}
+        bgGradient={'linear(to-r, blackAlpha.600, transparent)'}>
+        <Stack maxW={'2xl'} align={'flex-start'} spacing={6}>
+          <Text
+            color={'white'}
+            fontWeight={700}
+            lineHeight={1.2}
+            fontSize={useBreakpointValue({ base: '3xl', md: '4xl' })}>
+            Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor
+          </Text>
+          <Stack direction={'row'}>
+            <Button
+              bg={'blue.400'}
+              color={'white'}
+              _hover={{ bg: 'blue.500' }}>
+              Show me more
+            </Button>
+            <Button
+              bg={'whiteAlpha.300'}
+              rounded={'full'}
+              color={'white'}
+              _hover={{
+                rounded:'full', bg: 'whiteAlpha.500' }}>
+              Show me more
+            </Button>
+          </Stack>
+        </Stack>
+      </VStack>
   )
 }
 
