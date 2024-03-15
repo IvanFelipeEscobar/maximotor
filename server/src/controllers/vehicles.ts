@@ -1,6 +1,21 @@
 import { Request, Response } from "express";
 import { user } from "../models/user";
 import { vehicle } from "../models/vehicles";
+export const getVehicle = async (req: Request, res: Response) => {
+  try {
+    const { vehicleId } = req.params;
+    const singleVehicle = await vehicle.findById(vehicleId)
+    return !singleVehicle
+      ? res
+          .status(400)
+          .json({ message: "Cannot find a user with this username" })
+      : res.status(200).json(singleVehicle);
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: `whoops, Server issue. get it together!` });
+  }
+}
 export const addVehicle = async (req: Request, res: Response) => {
   try {
     const addCar = await vehicle.create(req.body);

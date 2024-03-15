@@ -4,7 +4,8 @@ import repairRoute from './repairs'
 import {
     addVehicle,
     editVehicle,
-    deleteVehicle
+    deleteVehicle,
+    getVehicle
 } from '../../../../controllers/vehicles'
 
 
@@ -13,7 +14,7 @@ const router = express.Router()
 router.use('/repairs', repairRoute)
 // ------> /api/users/vehicles...
 router.route('/').post(authMiddleware, addVehicle)
-router.route('/:vehicleId').put(authMiddleware, editVehicle).delete(authMiddleware, deleteVehicle)
+router.route('/:vehicleId').get(authMiddleware, getVehicle).put(authMiddleware, editVehicle).delete(authMiddleware, deleteVehicle)
 export default router
 
  

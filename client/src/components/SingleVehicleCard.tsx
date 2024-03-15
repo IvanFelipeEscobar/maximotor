@@ -1,8 +1,11 @@
 import { Button, Stack, Text, VStack, useBreakpointValue } from "@chakra-ui/react"
+import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 
 const SingleVehicleCard = () => {
-
+useEffect(()=>{
+  
+}, [])
     const { vehicleId }= useParams()
     console.log(vehicleId)
   return (
