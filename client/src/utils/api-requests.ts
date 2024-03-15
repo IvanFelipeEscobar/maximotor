@@ -79,9 +79,12 @@ export const addNewVehicle = async (input: VehicleInput, token: string) => {
     })
 }
 
-export const deleteVehicle = async (vehicleId: string ) => {
+export const deleteVehicle = async (vehicleId: string,  token: string) => {
     return await fetch(`${apiUrl}/api/users/vehicles/${vehicleId}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers:{
+            authorization: `Bearer ${token}`
+        }
     })
 
 }

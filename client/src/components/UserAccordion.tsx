@@ -85,11 +85,7 @@ export default function UserAccordion() {
             <AccordionPanel pb={4}>
               <Card align="center">
                 <CardBody>
-                  {!userData?.cars ? (
-                    <Text>your vehicle will appear here when you add one</Text>
-                  ) : (
-                    <VehicleCard userData={userData} />
-                  )}
+                  {userData?.cars && <VehicleCard userData={userData} />}
                 </CardBody>
                 <CardFooter>
                   <VehiclePickerButton />

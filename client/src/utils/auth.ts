@@ -11,7 +11,7 @@ class AuthService {
     const decoded = decode(token);
     const currentTime = Date.now() / 1000;
     if (!token || decoded.exp! < currentTime || token === undefined) {
-      this.removeToken();
+      this.logout();
       return true
     } else return false
   };

@@ -32,7 +32,6 @@ export default function Navbar() {
     <>
       <Box
         bg={useColorModeValue("gray.100", "gray.900")}
-        py={1}
         px={[2, 5]}
         pos={"fixed"}
         top={"0"}

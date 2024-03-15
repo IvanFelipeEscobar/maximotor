@@ -36,7 +36,7 @@ export default function Appointment() {
           <Stack direction={"row"} align={"center"}>
             <Text
               fontFamily={"heading"}
-              color={useColorModeValue("black", "white")}
+              color={useColorModeValue("aliceblue", "gray.800")}
               fontSize={"3xl"}
             >
               schedule your appointment today

@@ -49,13 +49,15 @@ export const deleteVehicle = async (req: Request, res: Response) => {
       return res.status(404).json({ message: "vehicle not found" });
     const updateUser = await user.findOneAndUpdate(
       { email: req.user.email },
-      { $pull: { cars: vehicleId } },
+      { $pull: { cars: {deleteVehicle} } },
       { new: true }
     );
     if (!updateUser)
       return res
         .status(400)
         .json({ message: "failed to delete vehicle from user" });
+
+    return res.status(200).json({ message: "Vehicle deleted successfully" });
   } catch (error) {
     console.error(error);
     res

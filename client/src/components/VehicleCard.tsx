@@ -22,17 +22,22 @@ import { FaTrash, FaWrench } from "react-icons/fa";
 import RepairForm from "./RepairForm";
 import { useState } from "react";
 import { deleteVehicle } from "../utils/api-requests";
+import { Auth } from "../utils/auth";
 const VehicleCard = ({ userData }: UDProps) => {
-  const [delVeh, setDelVeh] = useState('')
-  const handleDelete = async(vehicleID: string)  => {
-
-    try {
-      await deleteVehicle(vehicleID)
-    } catch (error) {
-      console.error(error)
+  const [delVeh, setDelVeh] = useState("");
+  const handleDelete = async (vehicleID: string) => {
+    const token = Auth.isLoggedIn() ? Auth.getToken() : null;
+    if (!token || Auth.isTokenExpired(token)) {
+      Auth.logout();
+      return;
     }
-    
-  }
+    try {
+      await deleteVehicle(vehicleID, token);
+      window.location.assign("/user-dashboard");
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     userData.cars && (
@@ -97,31 +102,35 @@ const VehicleCard = ({ userData }: UDProps) => {
                     <PopoverContent>
                       <PopoverArrow />
                       <PopoverCloseButton />
-                      <PopoverHeader color={'red'} textAlign={'center'}>
-                        to delete vehicle please input "{car.year + " " + car.make + " " + car.model}"
+                      <PopoverHeader color={"red"} textAlign={"center"}>
+                        to delete vehicle please input "
+                        {car.year + " " + car.make + " " + car.model}"
                       </PopoverHeader>
                       <PopoverBody>
-                        
                         <Input
-                        type="text"
-                        name="delVeh"
-                        onChange={(e=>setDelVeh(e.target.value))}
-                        value={delVeh}
+                          type="text"
+                          name="delVeh"
+                          onChange={(e) => {
+                            setDelVeh(e.target.value);
+                          }}
+                          value={delVeh}
                         />
                       </PopoverBody>
                       <PopoverFooter>
-                    {( delVeh === `${car.year} ${car.make} ${car.model}`) &&  <Button
-                      size={"xs"}
-                      marginTop={2}
-                      marginLeft={2}
-                      colorScheme={"red"}
-                      bg={"red.400"}
-                      _hover={{ bg: "red.500" }}
-                      leftIcon={
-                        <FaTrash />}
-                        onClick={()=> handleDelete(car._id.toString())}
-                    >Delete Vehicle
-                    </Button>}
+                        {delVeh === `${car.year} ${car.make} ${car.model}` && (
+                          <Button
+                            size={"xs"}
+                            marginTop={2}
+                            marginLeft={2}
+                            colorScheme={"red"}
+                            bg={"red.400"}
+                            _hover={{ bg: "red.500" }}
+                            leftIcon={<FaTrash />}
+                            onClick={() => handleDelete(car._id.toString())}
+                          >
+                            Delete Vehicle
+                          </Button>
+                        )}
                       </PopoverFooter>
                     </PopoverContent>
                   </Portal>
