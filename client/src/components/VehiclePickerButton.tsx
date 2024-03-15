@@ -20,7 +20,7 @@ const VehiclePickerButton = () => {
         variant={"solid"}
         bg={"blue.400"}
         color={"white"}
-        _hover={{
+        _hover={{rounded: 'full',
           bg: "blue.500",
         }}
         onClick={onOpen}

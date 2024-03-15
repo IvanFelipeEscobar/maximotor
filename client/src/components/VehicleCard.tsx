@@ -93,7 +93,7 @@ const VehicleCard = ({ userData }: UDProps) => {
                       marginLeft={2}
                       colorScheme={"red"}
                       bg={"red.400"}
-                      _hover={{ bg: "red.500" }}
+                      _hover={{rounded: 'full', bg: "red.500" }}
                     >
                       <FaTrash />
                     </Button>
@@ -124,7 +124,7 @@ const VehicleCard = ({ userData }: UDProps) => {
                             marginLeft={2}
                             colorScheme={"red"}
                             bg={"red.400"}
-                            _hover={{ bg: "red.500" }}
+                            _hover={{rounded: 'full', bg: "red.500" }}
                             leftIcon={<FaTrash />}
                             onClick={() => handleDelete(car._id.toString())}
                           >

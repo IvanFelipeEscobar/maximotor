@@ -111,7 +111,7 @@ export default function Signup() {
                 size="lg"
                 bg={"blue.400"}
                 color={"white"}
-                _hover={{
+                _hover={{rounded: 'full',
                   bg: "blue.500",
                 }}
               >

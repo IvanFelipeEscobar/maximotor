@@ -63,7 +63,7 @@ const UserCard = ({ userData }: UDProps) => {
         <Button
           bg={"blue.400"}
           color={"white"}
-          _hover={{
+          _hover={{rounded: 'full',
             bg: "blue.500",
           }}
           leftIcon={<FaEdit />}
@@ -75,7 +75,7 @@ const UserCard = ({ userData }: UDProps) => {
           leftIcon={<MdDelete />}
           colorScheme={"red"}
           bg={"red.400"}
-          _hover={{ bg: "red.500" }}
+          _hover={{rounded: 'full', bg: "red.500" }}
         >
           Delete{" "}
         </Button>

@@ -152,7 +152,7 @@ const VehiclePicker: React.FC = () => {
           variant={"solid"}
           colorScheme={"red"}
           bg={"red.400"}
-          _hover={{ bg: "red.500" }}
+          _hover={{ rounded: 'full', bg: "red.500" }}
         >
           <Text paddingRight={2}>Add vehicle</Text>
           <FaCarSide />

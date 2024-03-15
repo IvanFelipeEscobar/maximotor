@@ -63,10 +63,11 @@ export default function Navbar() {
           <Flex alignItems={"center"}>
             <Button
               marginLeft={[28, 14]}
-              bg={useColorModeValue("gray.400", "inherit")}
+              bg={useColorModeValue("gray.400", "gray.600")}
               aria-label="Toggle Color Mode"
               size={"sm"}
               onClick={toggleColorMode}
+              _hover={{rounded: 'full',}}
               _focus={{ boxShadow: "none" }}
               w="fit-content"
             >
@@ -79,7 +80,7 @@ export default function Navbar() {
                 variant={"solid"}
                 colorScheme={"red"}
                 bg={"red.400"}
-                _hover={{ bg: "red.500" }}
+                _hover={{rounded: 'full', bg: "red.500" }}
                 size={"sm"}
                 visibility={["inherit", "collapse"]}
                 marginLeft={3}
@@ -91,7 +92,7 @@ export default function Navbar() {
                 variant={"solid"}
                 colorScheme={"red"}
                 bg={"red.400"}
-                _hover={{ bg: "red.500" }}
+                _hover={{rounded: 'full', bg: "red.500" }}
                 size={"sm"}
                 leftIcon={<HiOutlineUserCircle />}
                 visibility={["collapse", "inherit"]}

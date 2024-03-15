@@ -90,7 +90,8 @@ export default function RepairForm({vehId}: {vehId:string}) {
         variant={"solid"}
         colorScheme={"red"}
         bg={"red.400"}
-        _hover={{ bg: "red.500" }}
+        _hover={{ rounded: 'full',
+          bg: "red.500" }}
         type="submit"
         leftIcon={<FaWrench />}
       >
