@@ -67,7 +67,15 @@ export const addUserInfo = async (input: UserInfoInput, token: string) => {
         body: JSON.stringify(input)
     })
 }
-
+export const getSingleVehicle = async (vehicleId: string, token: string) => {
+    return await fetch(`${apiUrl}/api/users/vehicles/${vehicleId}`, {
+        method: 'GET',
+        headers:{
+            'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`
+        }
+    })
+}
 export const addNewVehicle = async (input: VehicleInput, token: string) => {
     return await fetch(`${apiUrl}/api/users/vehicles`, {
         method: 'POST',
