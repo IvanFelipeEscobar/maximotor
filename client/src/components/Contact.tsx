@@ -70,7 +70,7 @@ export default function Contact() {
                         leftIcon={<MdEmail color="#1970F1" size="20px" />}>
                         maximotor@bellsouth.net
                       </Button>
-        <Text as={'b'}>Adress:</Text>
+        <Text as={'b'}>Address:</Text>
         <Button
                         size="md" height={'64px'}
 
