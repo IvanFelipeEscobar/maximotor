@@ -21,7 +21,7 @@ interface VehicleInput {
 }
 
 const apiUrl: string = process.env.NODE_ENV === 'production'
-  ? 'https://maximotor-server.vercel.app'
+  ? 'https://ec2-34-224-68-69.compute-1.amazonaws.com:3001'
   : 'http://localhost:3001';
 
 // Use `apiUrl` in your code
