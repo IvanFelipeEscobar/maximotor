@@ -13,7 +13,7 @@ Key features include:
 - User Authentication: Securely authenticate users using JSON Web Tokens (JWT), granting access to personalized features and services.
 - Vehicle Management: Users can conveniently save their vehicles and maintain a comprehensive repair history for each vehicle, aiding in efficient maintenance and record-keeping.
 
-[<img src="/maxi-screenshot.png" alt="Website Screen Shot" width="400"/>](https://maximotor.vercel.app)
+   [<img src="maxi-screenshot.png" alt="Website Screen Shot" width="400"/>](https://maximotor.vercel.app)
 
 ## Credit
 
