@@ -32,6 +32,7 @@ if (process.env.NODE_ENV === "production") {
 }
 //routes are defined in separate folder to keep concerns separated
 app.use(router);
+
 //database connection
 db.once(`open`, () => {
   app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
