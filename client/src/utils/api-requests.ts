@@ -21,7 +21,7 @@ interface VehicleInput {
 }
 
 const apiUrl: string = process.env.NODE_ENV === 'production'
-  ? 'http://ec2-34-224-68-69.compute-1.amazonaws.com:3001'
+  ? 'https://maximotor.onrender.com'
   : 'http://localhost:3001';
 
 // Use `apiUrl` in your code
