@@ -23,20 +23,16 @@ interface CarProp {
   car?: RepairInfo[];
 }
 const RepairsCard = ({ car }: CarProp) => {
-
   const { vehicleId } = useParams();
   const [delVeh, setDelVeh] = useState("");
 
   const handleDelete = async (vehicleID: string, repairID: string) => {
     try {
       await deleteRepair(vehicleID, repairID);
-
     } catch (error) {
       console.error(error);
     }
   };
-
-  console.table(car);
   return car!.map((repair) => (
     <Flex
       key={repair._id}
@@ -96,28 +92,25 @@ const RepairsCard = ({ car }: CarProp) => {
                 value={delVeh}
               />
             </PopoverBody>
-            {repair && (
-              <PopoverFooter>
-                {delVeh ===
-                  `delete repair` && (
-                  <Button
-                    size={"xs"}
-                    marginTop={2}
-                    marginLeft={2}
-                    colorScheme={"red"}
-                    bg={"red.400"}
-                    _hover={{ rounded: "full", bg: "red.500" }}
-                    leftIcon={<FaTrash />}
-                    onClick={(e) => {
-                      e.stopPropagation(); // Prevent the click from propagating to the row
-                      handleDelete(vehicleId!, repair?._id.toString());
-                    }}
-                  >
-                    Delete Vehicle
-                  </Button>
-                )}
-              </PopoverFooter>
-            )}
+            <PopoverFooter>
+              {delVeh === `delete repair` && (
+                <Button
+                  size={"xs"}
+                  marginTop={2}
+                  marginLeft={2}
+                  colorScheme={"red"}
+                  bg={"red.400"}
+                  _hover={{ rounded: "full", bg: "red.500" }}
+                  leftIcon={<FaTrash />}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    handleDelete(vehicleId!, repair._id!.toString());
+                  }}
+                >
+                  Delete Vehicle
+                </Button>
+              )}
+            </PopoverFooter>
           </PopoverContent>
         </Portal>
       </Popover>

@@ -27,7 +27,7 @@ export default function RepairForm({vehId}: {vehId:string}) {
     try {
       const res = await addRepair(repairData, vehicleId)
       if (!res.ok) throw new Error('Problem occured while adding repairs')
-      
+      window.location.reload()
     } catch (error) {
       console.error(error)
     }

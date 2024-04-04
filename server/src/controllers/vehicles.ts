@@ -64,7 +64,7 @@ export const deleteVehicle = async (req: Request, res: Response) => {
       return res.status(404).json({ message: "vehicle not found" });
     const updateUser = await user.findOneAndUpdate(
       { email: req.user.email },
-      { $pull: { cars: {deleteVehicle} } },
+      { $pull: { cars: {_id: vehicleId} } },
       { new: true }
     );
     if (!updateUser)

@@ -50,7 +50,7 @@ export const deleteRepair = async (req: Request, res: Response) => {
       return res.status(404).json({ message: "can't find that repair" });
     const removeRepairFromVeh = await vehicle.findOneAndUpdate(
         {_id: vehicleId},
-        {$pull: {repairs: {deleteRepair}}},
+        {$pull: {repairs: {_id: repairId}}},
         {new: true}
         );
     if(!removeRepairFromVeh)return res.status(404).json({message: 'vehicle not found - '})

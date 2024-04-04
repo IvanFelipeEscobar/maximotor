@@ -40,8 +40,8 @@ const SingleVehicleCard = () => {
       return;
     }
     try {
-      await deleteVehicle(vehicleID, token);
-      window.location.assign("/user-dashboard");
+      const res =await deleteVehicle(vehicleID, token);
+      if(res.ok) window.location.assign("/user-dashboard");
     } catch (error) {
       console.error(error);
     }
@@ -65,7 +65,6 @@ const SingleVehicleCard = () => {
     };
     getCar();
   }, [vehicleId]);
-  console.log(carData?.repairs);
   return (
     <VStack
       w={"full"}
@@ -182,7 +181,7 @@ const SingleVehicleCard = () => {
       </Stack>
       <Divider m={2} />
 
-      {carData?.repairs ? (
+      {carData && carData.repairs && carData.repairs.length != 0  ? (
         <RepairsCard car={carData?.repairs} />
       ) : (
         <Flex
@@ -191,7 +190,7 @@ const SingleVehicleCard = () => {
           direction={{ base: "column-reverse", sm: "row" }}
           width={"full"}
           rounded={"xl"}
-          p={10}
+          p={4}
           justifyContent={"center"}
           position={"relative"}
           bg={"gray.100"}

@@ -32,8 +32,8 @@ const VehicleCard = ({ userData }: UDProps) => {
       return;
     }
     try {
-      await deleteVehicle(vehicleID, token);
-      window.location.assign("/user-dashboard");
+      const res = await deleteVehicle(vehicleID, token);
+      if(res.ok)window.location.assign("/user-dashboard");
     } catch (error) {
       console.error(error);
     }
