@@ -16,6 +16,7 @@ import {
   Portal,
   Input,
   PopoverFooter,
+  TableCaption,
 } from "@chakra-ui/react";
 import { UDProps } from "../utils/types";
 import { FaTrash, FaWrench } from "react-icons/fa";
@@ -45,6 +46,8 @@ const VehicleCard = ({ userData }: UDProps) => {
   return (
     userData.cars && (
       <Table variant="simple" size={["sm", "md"]}>
+
+    <TableCaption>Click on a vehicle to see it's repair history</TableCaption>
         <Thead>
           <Tr>
             <Th>year</Th>
