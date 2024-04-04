@@ -7,6 +7,7 @@ import {
   Heading,
   Text,
   VStack,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { UDProps } from "../utils/types";
 import { FaPhoneAlt, FaEdit } from "react-icons/fa";
@@ -36,7 +37,10 @@ const UserCard = ({ userData }: UDProps) => {
   const state = userData.userInformation?.state || "";
   const zip = userData.userInformation?.zip || "";
   return (
-    <Card align="center" w={"xl"}>
+    <Card align="center" w={"xl"}
+    bg={useColorModeValue("gray.100", "gray.900")}
+    
+    >
       <CardBody>
         <VStack>
           <Heading size="md">{fullName}</Heading>

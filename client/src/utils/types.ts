@@ -1,4 +1,5 @@
 export interface RepairInfo {
+    _id: number;
     parts: string;
     repair: string;
     mileage?: string;

@@ -83,7 +83,10 @@ export default function UserAccordion() {
               <ChevronDownIcon fontSize="24px" />
             </AccordionButton>
             <AccordionPanel pb={4}>
-              <Card align="center">
+              <Card 
+              align="center" 
+              bg={useColorModeValue("gray.100", "gray.900")}
+              >
                 <CardBody>
                   {userData?.cars && <VehicleCard userData={userData} />}
                 </CardBody>

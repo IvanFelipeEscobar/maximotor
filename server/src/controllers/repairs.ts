@@ -45,16 +45,16 @@ export const editRepair = async (req: Request, res: Response) => {
 export const deleteRepair = async (req: Request, res: Response) => {
   try {
     const { vehicleId, repairId } = req.params;
-    const removedRepair = await repairs.findOneAndDelete({ _id: repairId });
+    const removedRepair = await repairs.findOneAndRemove({ _id: repairId });
     if (!removedRepair)
       return res.status(404).json({ message: "can't find that repair" });
     const removeRepairFromVeh = await vehicle.findOneAndUpdate(
         {_id: vehicleId},
-        {$pull: {repairs: repairId}},
+        {$pull: {repairs: {deleteRepair}}},
         {new: true}
         );
     if(!removeRepairFromVeh)return res.status(404).json({message: 'vehicle not found - '})
-    res.status(200)
+    return res.status(200)
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "server error - :/" });

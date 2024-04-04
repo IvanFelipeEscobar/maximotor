@@ -1,24 +1,51 @@
 import {
   Button,
   Divider,
+  Flex,
   HStack,
+  Input,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverFooter,
+  PopoverHeader,
+  PopoverTrigger,
+  Portal,
   Stack,
   Text,
   VStack,
   useBreakpointValue,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Auth } from "../utils/auth";
-import { getSingleVehicle } from "../utils/api-requests";
+import { deleteVehicle, getSingleVehicle } from "../utils/api-requests";
 import { Vehicle } from "../utils/types";
 
 import { HiOutlineUserCircle } from "react-icons/hi2";
-import { FaWrench, FaTrash, FaEdit } from "react-icons/fa";
+import { FaWrench, FaTrash } from "react-icons/fa";
 import RepairsCard from "../components/RepairsCard";
+import RepairForm from "../components/RepairForm";
 const SingleVehicleCard = () => {
   const [carData, setCarData] = useState<Vehicle | null>(null);
   const { vehicleId } = useParams();
+  const [delVeh, setDelVeh] = useState("");
+  const handleDelete = async (vehicleID: string) => {
+    const token = Auth.isLoggedIn() ? Auth.getToken() : null;
+    if (!token || Auth.isTokenExpired(token)) {
+      Auth.logout();
+      return;
+    }
+    try {
+      await deleteVehicle(vehicleID, token);
+      window.location.assign("/user-dashboard");
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
     const getCar = async () => {
@@ -57,62 +84,121 @@ const SingleVehicleCard = () => {
           >
             {carData?.year + " " + carData?.make + " " + carData?.model}
           </Text>
-          <Button rounded={"full"} size={"sm"} marginLeft={12}>
-            <FaEdit />
-          </Button>
+
+          <Popover>
+            <PopoverTrigger>
+              <Button
+                size={"sm"}
+                marginLeft={8}
+                colorScheme={"red"}
+                bg={"red.400"}
+                _hover={{ rounded: "full", bg: "red.500" }}
+              >
+                <FaTrash />
+              </Button>
+            </PopoverTrigger>
+            <Portal>
+              <PopoverContent>
+                <PopoverArrow />
+                <PopoverCloseButton />
+                <PopoverHeader color={"red"} textAlign={"center"}>
+                  to delete vehicle please input "
+                  {carData?.year + " " + carData?.make + " " + carData?.model}"
+                </PopoverHeader>
+                <PopoverBody>
+                  <Input
+                    type="text"
+                    name="delVeh"
+                    onChange={(e) => {
+                      setDelVeh(e.target.value);
+                    }}
+                    value={delVeh}
+                  />
+                </PopoverBody>
+                {carData && (
+                  <PopoverFooter>
+                    {delVeh ===
+                      `${carData?.year} ${carData?.make} ${carData?.model}` && (
+                      <Button
+                        size={"xs"}
+                        marginTop={2}
+                        marginLeft={2}
+                        colorScheme={"red"}
+                        bg={"red.400"}
+                        _hover={{ rounded: "full", bg: "red.500" }}
+                        leftIcon={<FaTrash />}
+                        onClick={(e) => {
+                          e.stopPropagation(); // Prevent the click from propagating to the row
+                          handleDelete(carData?._id.toString());
+                        }}
+                      >
+                        Delete Vehicle
+                      </Button>
+                    )}
+                  </PopoverFooter>
+                )}
+              </PopoverContent>
+            </Portal>
+          </Popover>
         </HStack>
+
         <Stack direction={"row"}>
           <Button
-            bg={"blue.400"}
-            color={"white"}
             _hover={{ rounded: "full", bg: "blue.500" }}
+            bg={useColorModeValue("whiteAlpha.700", "gray.900")}
             leftIcon={<HiOutlineUserCircle />}
+            onClick={() => window.location.assign("/user-dashboard")}
           >
             User dashboard
           </Button>
-          <Button
-            leftIcon={<FaWrench />}
-            bg={"whiteAlpha.300"}
-            _hover={{
-              rounded: "full",
-              bg: "whiteAlpha.500",
-            }}
-            display={["none", "inherit"]}
-          >
-            Add a repair
-          </Button>
-          <Button
-            bg={"whiteAlpha.300"}
-            _hover={{
-              rounded: "full",
-              bg: "whiteAlpha.500",
-            }}
-            display={["inherit", "none"]}
-          >
-            <FaWrench />
-          </Button>
 
-          <Button
-            leftIcon={<FaTrash />}
-            colorScheme={"red"}
-            bg={"red.400"}
-            _hover={{ rounded: "full", bg: "red.500" }}
-            display={["none", "none", "inherit"]}
-          >
-            Delete Vehicle
-          </Button>
-          <Button
-            colorScheme={"red"}
-            bg={"red.400"}
-            _hover={{ rounded: "full", bg: "red.500" }}
-            display={["inherit", "inherit", "none"]}
-          >
-            <FaTrash />
-          </Button>
+          <Popover>
+            <PopoverTrigger>
+              <Button
+                leftIcon={<FaWrench />}
+                bg={useColorModeValue("whiteAlpha.700", "gray.900")}
+                _hover={{
+                  rounded: "full",
+                  bg: "red.500",
+                }}
+              >
+                Add a repair
+              </Button>
+            </PopoverTrigger>
+            <Portal>
+              <PopoverContent>
+                <PopoverArrow />
+                <PopoverCloseButton />
+                <PopoverHeader as={"b"} textAlign={"center"}>
+                  Add a repair to this vehicle for your vehicle history
+                </PopoverHeader>
+                <PopoverBody>
+                  {carData && <RepairForm vehId={carData?._id.toString()} />}
+                </PopoverBody>
+              </PopoverContent>
+            </Portal>
+          </Popover>
         </Stack>
       </Stack>
       <Divider m={2} />
-      <RepairsCard />
+
+      {carData?.repairs ? (
+        <RepairsCard car={carData?.repairs} />
+      ) : (
+        <Flex
+          boxShadow={"lg"}
+          maxW={"640px"}
+          direction={{ base: "column-reverse", sm: "row" }}
+          width={"full"}
+          rounded={"xl"}
+          p={10}
+          justifyContent={"center"}
+          position={"relative"}
+          bg={"gray.100"}
+        >
+          <Text>your repairs will appear here when you add them</Text>
+        </Flex>
+      )}
     </VStack>
   );
 };
