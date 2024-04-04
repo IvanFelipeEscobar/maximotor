@@ -28,7 +28,8 @@ const RepairsCard = ({ car }: CarProp) => {
 
   const handleDelete = async (vehicleID: string, repairID: string) => {
     try {
-      await deleteRepair(vehicleID, repairID);
+      const res = await deleteRepair(vehicleID, repairID);
+      if (res) window.location.assign(`/vehicles/${vehicleID}`)
     } catch (error) {
       console.error(error);
     }
@@ -102,8 +103,7 @@ const RepairsCard = ({ car }: CarProp) => {
                   bg={"red.400"}
                   _hover={{ rounded: "full", bg: "red.500" }}
                   leftIcon={<FaTrash />}
-                  onClick={(e) => {
-                    e.preventDefault()
+                  onClick={() => {
                     handleDelete(vehicleId!, repair._id!.toString());
                   }}
                 >
